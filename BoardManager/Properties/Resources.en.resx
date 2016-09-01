@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="str_close_title" xml:space="preserve">
+    <value>Notification before closing</value>
+  </data>
+  <data name="str_emg_msg" xml:space="preserve">
+    <value>Please re-install the Studuino software.</value>
+  </data>
+  <data name="str_emg_title" xml:space="preserve">
+    <value>System file is corrupted.</value>
+  </data>
+  <data name="str_err_file_open1" xml:space="preserve">
+    <value>Invalid data. Please select again.</value>
+  </data>
+  <data name="str_file_name_new" xml:space="preserve">
+    <value>New File</value>
+  </data>
+  <data name="str_lb_sns_acc" xml:space="preserve">
+    <value>SENSOR A4/A5</value>
+  </data>
+  <data name="str_lb_sns_acc_x" xml:space="preserve">
+    <value>Accelerometer X</value>
+  </data>
+  <data name="str_lb_sns_acc_y" xml:space="preserve">
+    <value>Accelerometer Y</value>
+  </data>
+  <data name="str_lb_sns_acc_z" xml:space="preserve">
+    <value>Accelerometer Z</value>
+  </data>
+  <data name="str_lb_sns_bt" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="str_lb_sns_not_connect" xml:space="preserve">
+    <value>No sensor</value>
+  </data>
+  <data name="str_lb_sns_vw" xml:space="preserve">
+    <value>SENSOR A</value>
+  </data>
+  <data name="str_lb_val_sns_off" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="str_lb_val_sns_on" xml:space="preserve">
+    <value>ON</value>
+  </data>
+  <data name="str_msg_close" xml:space="preserve">
+    <value>Save the project before closing?</value>
+  </data>
+  <data name="str_msg_err_archive" xml:space="preserve">
+    <value>Archive error. A message will appear below</value>
+  </data>
+  <data name="str_msg_err_compile" xml:space="preserve">
+    <value>Compile error. A message will appear below</value>
+  </data>
+  <data name="str_msg_err_discon1" xml:space="preserve">
+    <value>Failed to connect to the robot.</value>
+  </data>
+  <data name="str_msg_err_discon2" xml:space="preserve">
+    <value>【Check】Make sure the robot and PC are connected by a USB cable.</value>
+  </data>
+  <data name="str_msg_err_discon3" xml:space="preserve">
+    <value>The cord is disconnected. The software may close unexpectedly.</value>
+  </data>
+  <data name="str_msg_err_discon4" xml:space="preserve">
+    <value>【Error】The software is going to close. Your data will be saved.</value>
+  </data>
+  <data name="str_msg_err_discon5" xml:space="preserve">
+    <value>Studuino and PC failed to sync.
+Save your project, exit this software, 
+reset Studuino, and restart this software.</value>
+  </data>
+  <data name="str_msg_err_icon1" xml:space="preserve">
+    <value>No sensor specified for some blocks.</value>
+  </data>
+  <data name="str_msg_err_icon2" xml:space="preserve">
+    <value>Specify a sensor for block No.</value>
+  </data>
+  <data name="str_msg_err_icon3" xml:space="preserve">
+    <value>before completing the program.</value>
+  </data>
+  <data name="str_msg_err_icon4" xml:space="preserve">
+    <value>There is an invalid action icon. 【No.</value>
+  </data>
+  <data name="str_msg_err_icon5" xml:space="preserve">
+    <value>】 Will you continue the process?</value>
+  </data>
+  <data name="str_msg_err_icon6" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="str_msg_err_link" xml:space="preserve">
+    <value>Link error. A message will appear below</value>
+  </data>
+  <data name="str_msg_err_miscon1" xml:space="preserve">
+    <value>Failed to connect to the robot</value>
+  </data>
+  <data name="str_msg_err_miscon2" xml:space="preserve">
+    <value>【Error】Another application is already communicating with the robot. Close the other application and try again.</value>
+  </data>
+  <data name="str_msg_err_miscon3" xml:space="preserve">
+    <value>【Check】Make sure the robot and PC are connected by a USB cable.</value>
+  </data>
+  <data name="str_msg_err_noresp1" xml:space="preserve">
+    <value>Could not establish connection to the robot</value>
+  </data>
+  <data name="str_msg_err_noresp2" xml:space="preserve">
+    <value>【Error】Retry a few times. If it cannot connect, save the program and restart the software.</value>
+  </data>
+  <data name="str_msg_err_objcopy" xml:space="preserve">
+    <value>Object copy error. A message will appear below</value>
+  </data>
+  <data name="str_msg_err_title1" xml:space="preserve">
+    <value>Could not access to Studuino</value>
+  </data>
+  <data name="str_msg_err_wmi" xml:space="preserve">
+    <value>The WMI service may have failed, making automatic COM port retrieval unavailable. Please choose your desired COM port from the dialog box.</value>
+  </data>
+  <data name="str_msg_file_save" xml:space="preserve">
+    <value>Save current project?</value>
+  </data>
+  <data name="str_msg_warn_repeat" xml:space="preserve">
+    <value>Repeat block is on.</value>
+  </data>
+  <data name="str_note_compiling" xml:space="preserve">
+    <value>Compiling...</value>
+  </data>
+  <data name="str_note_mode_test_1" xml:space="preserve">
+    <value>Shifting to Test mode</value>
+  </data>
+  <data name="str_note_mode_test_2" xml:space="preserve">
+    <value>Connecting to the board</value>
+  </data>
+  <data name="str_note_mode_test_3" xml:space="preserve">
+    <value>Shift to Testing mode complete</value>
+  </data>
+  <data name="str_note_mode_upd1" xml:space="preserve">
+    <value>Re-establish communication</value>
+  </data>
+  <data name="str_note_mode_upd2" xml:space="preserve">
+    <value>Re-establishing communication</value>
+  </data>
+  <data name="str_note_transffering" xml:space="preserve">
+    <value>Data transferring</value>
+  </data>
+  <data name="str_note_updating" xml:space="preserve">
+    <value>Transferring to the board</value>
+  </data>
+  <data name="str_ofd_filter" xml:space="preserve">
+    <value>Icon Progamming File(*.ipd)|*.ipd|All File(*.*)|*.*</value>
+  </data>
+  <data name="str_ofd_title" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="str_parts_button" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="str_parts_button1" xml:space="preserve">
+    <value>Button1</value>
+  </data>
+  <data name="str_parts_button2" xml:space="preserve">
+    <value>Button2</value>
+  </data>
+  <data name="str_parts_button3" xml:space="preserve">
+    <value>Button3</value>
+  </data>
+  <data name="str_parts_button4" xml:space="preserve">
+    <value>Button4</value>
+  </data>
+  <data name="str_parts_dev_buzzer" xml:space="preserve">
+    <value>Buzzer</value>
+  </data>
+  <data name="str_parts_dev_colorLed" xml:space="preserve">
+    <value>ColorLED</value>
+  </data>
+  <data name="str_parts_dev_led" xml:space="preserve">
+    <value>LED</value>
+  </data>
+  <data name="str_parts_sensor_acc" xml:space="preserve">
+    <value>Accelerometer</value>
+  </data>
+  <data name="str_parts_sensor_ir" xml:space="preserve">
+    <value>IR Photoreflector</value>
+  </data>
+  <data name="str_parts_sensor_light" xml:space="preserve">
+    <value>Light sensor</value>
+  </data>
+  <data name="str_parts_sensor_sound" xml:space="preserve">
+    <value>Sound sensor</value>
+  </data>
+  <data name="str_parts_sensor_touch" xml:space="preserve">
+    <value>Touch sensor</value>
+  </data>
+  <data name="str_scr_comment_acc" xml:space="preserve">
+    <value>// Accelerometer start</value>
+  </data>
+  <data name="str_scr_comment_bt" xml:space="preserve">
+    <value>// Button input setting</value>
+  </data>
+  <data name="str_scr_comment_buzzer" xml:space="preserve">
+    <value>// Buzzer setting</value>
+  </data>
+  <data name="str_scr_comment_dc" xml:space="preserve">
+    <value>// DC motor setting</value>
+  </data>
+  <data name="str_scr_comment_dc1" xml:space="preserve">
+    <value>// DC motor1</value>
+  </data>
+  <data name="str_scr_comment_dc2" xml:space="preserve">
+    <value>// DC motor2</value>
+  </data>
+  <data name="str_scr_comment_dc_pullup" xml:space="preserve">
+    <value>// __en_str_scr_comment_dc_pullup</value>
+  </data>
+  <data name="str_scr_comment_led" xml:space="preserve">
+    <value>// LED setting</value>
+  </data>
+  <data name="str_scr_comment_pullup" xml:space="preserve">
+    <value>// __en_str_scr_comment_pullup</value>
+  </data>
+  <data name="str_scr_comment_sns" xml:space="preserve">
+    <value>// Sensor input setting</value>
+  </data>
+  <data name="str_scr_comment_sub1_2" xml:space="preserve">
+    <value>// Run submenu1</value>
+  </data>
+  <data name="str_scr_comment_sub2_2" xml:space="preserve">
+    <value>// Run submenu2</value>
+  </data>
+  <data name="str_scr_comment_sv" xml:space="preserve">
+    <value>// Servomotor setting</value>
+  </data>
+  <data name="str_sfd_file_name" xml:space="preserve">
+    <value>new_file.ipd</value>
+  </data>
+  <data name="str_sfd_title" xml:space="preserve">
+    <value>Choose destination location</value>
+  </data>
+  <data name="str_software_name" xml:space="preserve">
+    <value>Studuino Icon Programming</value>
+  </data>
+  <data name="str_src_comment1" xml:space="preserve">
+    <value>// Function declaration</value>
+  </data>
+  <data name="str_src_comment2" xml:space="preserve">
+    <value>// Run menu processing</value>
+  </data>
+  <data name="str_src_comment3" xml:space="preserve">
+    <value>// Menu processing</value>
+  </data>
+  <data name="str_src_comment_sub1_1" xml:space="preserve">
+    <value>// Submenu1 processing</value>
+  </data>
+  <data name="str_src_comment_sub2_1" xml:space="preserve">
+    <value>// Submenu2 processing</value>
+  </data>
+  <data name="str_src_title" xml:space="preserve">
+    <value>Arduino Langage Source code</value>
+  </data>
+</root>

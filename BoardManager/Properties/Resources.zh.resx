@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="str_close_title" xml:space="preserve">
+    <value>__zh__str_close_title</value>
+  </data>
+  <data name="str_emg_msg" xml:space="preserve">
+    <value>__zh__str_emg_msg</value>
+  </data>
+  <data name="str_emg_title" xml:space="preserve">
+    <value>系统文件被毁</value>
+  </data>
+  <data name="str_err_file_open1" xml:space="preserve">
+    <value>__zh__str_err_file_open1</value>
+  </data>
+  <data name="str_file_name_new" xml:space="preserve">
+    <value>新文件</value>
+  </data>
+  <data name="str_lb_sns_acc" xml:space="preserve">
+    <value>传感器 A4/A5</value>
+  </data>
+  <data name="str_lb_sns_acc_x" xml:space="preserve">
+    <value>加速度传感器 X</value>
+  </data>
+  <data name="str_lb_sns_acc_y" xml:space="preserve">
+    <value>加速度传感器 Y</value>
+  </data>
+  <data name="str_lb_sns_acc_z" xml:space="preserve">
+    <value>加速度传感器 Z</value>
+  </data>
+  <data name="str_lb_sns_bt" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="str_lb_sns_not_connect" xml:space="preserve">
+    <value>传感器未连接</value>
+  </data>
+  <data name="str_lb_sns_vw" xml:space="preserve">
+    <value>传感器 A</value>
+  </data>
+  <data name="str_lb_val_sns_off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="str_lb_val_sns_on" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="str_msg_close" xml:space="preserve">
+    <value>__zh__str_msg_close</value>
+  </data>
+  <data name="str_msg_err_archive" xml:space="preserve">
+    <value>归档时发生错误。错误信息如下所示。</value>
+  </data>
+  <data name="str_msg_err_compile" xml:space="preserve">
+    <value>发生编译错误。错误信息如下所示。</value>
+  </data>
+  <data name="str_msg_err_discon1" xml:space="preserve">
+    <value>未能确认与机器人连接。</value>
+  </data>
+  <data name="str_msg_err_discon2" xml:space="preserve">
+    <value>【对策】请检查是否已用USB数据线讲机器人与电脑连接。</value>
+  </data>
+  <data name="str_msg_err_discon3" xml:space="preserve">
+    <value>与机器人的通信已断开。软件有可能不可预料地退出。</value>
+  </data>
+  <data name="str_msg_err_discon4" xml:space="preserve">
+    <value>【对策】退出软件。请保存程序。</value>
+  </data>
+  <data name="str_msg_err_discon5" xml:space="preserve">
+    <value>Studuino和PC未能同期。
+请保存此项目丶关掉程序环境丶重置Studuino及重新启动程序环境。</value>
+  </data>
+  <data name="str_msg_err_icon1" xml:space="preserve">
+    <value>存在未指定传感器的条件。</value>
+  </data>
+  <data name="str_msg_err_icon2" xml:space="preserve">
+    <value>请设定No.</value>
+  </data>
+  <data name="str_msg_err_icon3" xml:space="preserve">
+    <value>的传感器种类后再进行本处理。</value>
+  </data>
+  <data name="str_msg_err_icon4" xml:space="preserve">
+    <value>存在无效的行动图标。【No.</value>
+  </data>
+  <data name="str_msg_err_icon5" xml:space="preserve">
+    <value>__zh__str_msg_err_icon5</value>
+  </data>
+  <data name="str_msg_err_icon6" xml:space="preserve">
+    <value>__zh__str_msg_err_icon6</value>
+  </data>
+  <data name="str_msg_err_link" xml:space="preserve">
+    <value>链接时发生错误。错误信息如下所示。</value>
+  </data>
+  <data name="str_msg_err_miscon1" xml:space="preserve">
+    <value>与机器人连接失败</value>
+  </data>
+  <data name="str_msg_err_miscon2" xml:space="preserve">
+    <value>【对策】其它的应用程序正在与机器人通信。请退出可能正在与机器人通信的应用程序，然后再次连接。</value>
+  </data>
+  <data name="str_msg_err_miscon3" xml:space="preserve">
+    <value>【对策】请检查是否已用USB数据线讲机器人与电脑连接。</value>
+  </data>
+  <data name="str_msg_err_noresp1" xml:space="preserve">
+    <value>无法与机器人建立通信</value>
+  </data>
+  <data name="str_msg_err_noresp2" xml:space="preserve">
+    <value>【对策】再次尝试仍然无法通信时，请将程序保存后重新启动软件。</value>
+  </data>
+  <data name="str_msg_err_objcopy" xml:space="preserve">
+    <value>发生目标拷贝错误。错误信息如下所示。</value>
+  </data>
+  <data name="str_msg_err_title1" xml:space="preserve">
+    <value>未能跟Studuino通信</value>
+  </data>
+  <data name="str_msg_err_wmi" xml:space="preserve">
+    <value>WMI服务有可能停止响应运行。就不能自动获取COM端口信息，所以请选择对话所使用的COM端口。</value>
+  </data>
+  <data name="str_msg_file_save" xml:space="preserve">
+    <value>__zh__str_msg_file_save</value>
+  </data>
+  <data name="str_msg_warn_repeat" xml:space="preserve">
+    <value>重复块未关闭</value>
+  </data>
+  <data name="str_note_compiling" xml:space="preserve">
+    <value>正在编译…</value>
+  </data>
+  <data name="str_note_mode_test_1" xml:space="preserve">
+    <value>正在移至测试模式</value>
+  </data>
+  <data name="str_note_mode_test_2" xml:space="preserve">
+    <value>正在与电路板连接</value>
+  </data>
+  <data name="str_note_mode_test_3" xml:space="preserve">
+    <value>测试模式转移完成</value>
+  </data>
+  <data name="str_note_mode_upd1" xml:space="preserve">
+    <value>通信更新处理</value>
+  </data>
+  <data name="str_note_mode_upd2" xml:space="preserve">
+    <value>正在更新通信</value>
+  </data>
+  <data name="str_note_transffering" xml:space="preserve">
+    <value>正在发送程序</value>
+  </data>
+  <data name="str_note_updating" xml:space="preserve">
+    <value>正在发送至电路板</value>
+  </data>
+  <data name="str_ofd_filter" xml:space="preserve">
+    <value>图标编程用文件(*.ipd)|*.ipd|所有文件(*.*)|*.*</value>
+  </data>
+  <data name="str_ofd_title" xml:space="preserve">
+    <value>请选择要打开的文件</value>
+  </data>
+  <data name="str_parts_button" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="str_parts_button1" xml:space="preserve">
+    <value>按钮1</value>
+  </data>
+  <data name="str_parts_button2" xml:space="preserve">
+    <value>按钮2</value>
+  </data>
+  <data name="str_parts_button3" xml:space="preserve">
+    <value>按钮3</value>
+  </data>
+  <data name="str_parts_button4" xml:space="preserve">
+    <value>按钮4</value>
+  </data>
+  <data name="str_parts_dev_buzzer" xml:space="preserve">
+    <value>蜂鸣器</value>
+  </data>
+  <data name="str_parts_dev_colorLed" xml:space="preserve">
+    <value>彩色LED</value>
+  </data>
+  <data name="str_parts_dev_led" xml:space="preserve">
+    <value>LED</value>
+  </data>
+  <data name="str_parts_sensor_acc" xml:space="preserve">
+    <value>加速度传感器</value>
+  </data>
+  <data name="str_parts_sensor_ir" xml:space="preserve">
+    <value>红外线反射传感器</value>
+  </data>
+  <data name="str_parts_sensor_light" xml:space="preserve">
+    <value>光传感器</value>
+  </data>
+  <data name="str_parts_sensor_sound" xml:space="preserve">
+    <value>声音传感器</value>
+  </data>
+  <data name="str_parts_sensor_touch" xml:space="preserve">
+    <value>触摸传感器</value>
+  </data>
+  <data name="str_scr_comment_acc" xml:space="preserve">
+    <value>// 加速度传感器开始</value>
+  </data>
+  <data name="str_scr_comment_bt" xml:space="preserve">
+    <value>// 按钮输入的设定</value>
+  </data>
+  <data name="str_scr_comment_buzzer" xml:space="preserve">
+    <value>// 蜂鸣器设定处理</value>
+  </data>
+  <data name="str_scr_comment_dc" xml:space="preserve">
+    <value>// DC马达的设定</value>
+  </data>
+  <data name="str_scr_comment_dc1" xml:space="preserve">
+    <value>// DC马达1</value>
+  </data>
+  <data name="str_scr_comment_dc2" xml:space="preserve">
+    <value>// DC马达2</value>
+  </data>
+  <data name="str_scr_comment_dc_pullup" xml:space="preserve">
+    <value>// __zh__str_scr_comment_dc_pullup</value>
+  </data>
+  <data name="str_scr_comment_led" xml:space="preserve">
+    <value>// LED设定处理</value>
+  </data>
+  <data name="str_scr_comment_pullup" xml:space="preserve">
+    <value>// __zh__str_scr_comment_pullup</value>
+  </data>
+  <data name="str_scr_comment_sns" xml:space="preserve">
+    <value>// 传感器输入的设定</value>
+  </data>
+  <data name="str_scr_comment_sub1_2" xml:space="preserve">
+    <value>// 运行子菜单1</value>
+  </data>
+  <data name="str_scr_comment_sub2_2" xml:space="preserve">
+    <value>// 运行子菜单1</value>
+  </data>
+  <data name="str_scr_comment_sv" xml:space="preserve">
+    <value>// 伺服马达的设定</value>
+  </data>
+  <data name="str_sfd_file_name" xml:space="preserve">
+    <value>新文件.ipd</value>
+  </data>
+  <data name="str_sfd_title" xml:space="preserve">
+    <value>请选择保存的位置</value>
+  </data>
+  <data name="str_software_name" xml:space="preserve">
+    <value>Studuino图标编程</value>
+  </data>
+  <data name="str_src_comment1" xml:space="preserve">
+    <value>// 原型声明</value>
+  </data>
+  <data name="str_src_comment2" xml:space="preserve">
+    <value>// 菜单处理</value>
+  </data>
+  <data name="str_src_comment3" xml:space="preserve">
+    <value>// 菜单处理</value>
+  </data>
+  <data name="str_src_comment_sub1_1" xml:space="preserve">
+    <value>// 子菜单1处理</value>
+  </data>
+  <data name="str_src_comment_sub2_1" xml:space="preserve">
+    <value>// 子菜单2处理</value>
+  </data>
+  <data name="str_src_title" xml:space="preserve">
+    <value>Arduino语言源代码</value>
+  </data>
+</root>

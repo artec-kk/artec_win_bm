@@ -1,0 +1,1614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbDCOut1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbDCOut1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbDCOut1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbDCOut1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 27</value>
+  </data>
+  <data name="cbDCOut1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 16</value>
+  </data>
+  <data name="cbDCOut1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbDCOut1.Text" xml:space="preserve">
+    <value>M1</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut1.Name" xml:space="preserve">
+    <value>cbDCOut1</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbDCOut2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbDCOut2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbDCOut2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbDCOut2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 27</value>
+  </data>
+  <data name="cbDCOut2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 16</value>
+  </data>
+  <data name="cbDCOut2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbDCOut2.Text" xml:space="preserve">
+    <value>M2</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut2.Name" xml:space="preserve">
+    <value>cbDCOut2</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cbDCOut2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 248</value>
+  </data>
+  <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="OK.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OK.Name" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OK.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Cancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 248</value>
+  </data>
+  <data name="Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Name" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 11.25pt, style=Bold</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 15</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>DCモーター</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 78</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 11.25pt, style=Bold</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>サーボモーター</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbSVOut8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut8.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 27</value>
+  </data>
+  <data name="cbSVOut8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSVOut8.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cbSVOut8.Text" xml:space="preserve">
+    <value>D8</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut8.Name" xml:space="preserve">
+    <value>cbSVOut8</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut8.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbSVOut7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut7.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 27</value>
+  </data>
+  <data name="cbSVOut7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSVOut7.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbSVOut7.Text" xml:space="preserve">
+    <value>D7</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut7.Name" xml:space="preserve">
+    <value>cbSVOut7</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut7.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbSVOut6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 27</value>
+  </data>
+  <data name="cbSVOut6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSVOut6.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbSVOut6.Text" xml:space="preserve">
+    <value>D4</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut6.Name" xml:space="preserve">
+    <value>cbSVOut6</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut6.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbSVOut5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 27</value>
+  </data>
+  <data name="cbSVOut5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSVOut5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbSVOut5.Text" xml:space="preserve">
+    <value>D2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut5.Name" xml:space="preserve">
+    <value>cbSVOut5</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut5.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbSVOut4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut4.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 49</value>
+  </data>
+  <data name="cbSVOut4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 16</value>
+  </data>
+  <data name="cbSVOut4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cbSVOut4.Text" xml:space="preserve">
+    <value>D12</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut4.Name" xml:space="preserve">
+    <value>cbSVOut4</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut4.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbSVOut3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 49</value>
+  </data>
+  <data name="cbSVOut3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 16</value>
+  </data>
+  <data name="cbSVOut3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cbSVOut3.Text" xml:space="preserve">
+    <value>D11</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut3.Name" xml:space="preserve">
+    <value>cbSVOut3</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut3.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cbSVOut2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 49</value>
+  </data>
+  <data name="cbSVOut2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 16</value>
+  </data>
+  <data name="cbSVOut2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbSVOut2.Text" xml:space="preserve">
+    <value>D10</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut2.Name" xml:space="preserve">
+    <value>cbSVOut2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut2.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbSVOut1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSVOut1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSVOut1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
+  </data>
+  <data name="cbSVOut1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 49</value>
+  </data>
+  <data name="cbSVOut1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSVOut1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbSVOut1.Text" xml:space="preserve">
+    <value>D9</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut1.Name" xml:space="preserve">
+    <value>cbSVOut1</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;cbSVOut1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 12</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 78</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbbSIn4.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn4.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn4.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn4.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn4.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn4.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn4.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn4.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn4.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn4.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn4.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn4.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn4.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 107</value>
+  </data>
+  <data name="cbbSIn4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn4.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn4.Name" xml:space="preserve">
+    <value>cbbSIn4</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn4.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 11.25pt, style=Bold</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>センサー/LED/ブザー</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbSIn7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn7.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 84</value>
+  </data>
+  <data name="cbSIn7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn7.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="cbSIn7.Text" xml:space="preserve">
+    <value>A6</value>
+  </data>
+  <data name="&gt;&gt;cbSIn7.Name" xml:space="preserve">
+    <value>cbSIn7</value>
+  </data>
+  <data name="&gt;&gt;cbSIn7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn7.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbbSIn8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn8.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn8.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn8.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn8.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn8.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn8.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn8.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn8.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn8.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn8.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn8.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn8.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 108</value>
+  </data>
+  <data name="cbbSIn8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn8.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn8.Name" xml:space="preserve">
+    <value>cbbSIn8</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn8.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn8.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbbSIn7.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn7.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn7.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn7.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn7.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn7.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn7.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn7.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn7.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn7.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn7.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn7.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn7.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 82</value>
+  </data>
+  <data name="cbbSIn7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn7.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn7.Name" xml:space="preserve">
+    <value>cbbSIn7</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn7.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn7.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbbSIn6.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn6.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn6.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn6.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn6.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn6.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn6.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn6.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn6.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn6.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn6.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn6.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 56</value>
+  </data>
+  <data name="cbbSIn6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn6.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn6.Name" xml:space="preserve">
+    <value>cbbSIn6</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn6.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn6.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbbSIn1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn1.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn1.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn1.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn1.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn1.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn1.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn1.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn1.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn1.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn1.Items9" xml:space="preserve">
+    <value>加速度(X軸)</value>
+  </data>
+  <data name="cbbSIn1.Items10" xml:space="preserve">
+    <value>加速度(Y軸)</value>
+  </data>
+  <data name="cbbSIn1.Items11" xml:space="preserve">
+    <value>加速度(Z軸)</value>
+  </data>
+  <data name="cbbSIn1.Items12" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 29</value>
+  </data>
+  <data name="cbbSIn1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn1.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn1.Name" xml:space="preserve">
+    <value>cbbSIn1</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cbSIn8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn8.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 110</value>
+  </data>
+  <data name="cbSIn8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn8.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="cbSIn8.Text" xml:space="preserve">
+    <value>A7</value>
+  </data>
+  <data name="&gt;&gt;cbSIn8.Name" xml:space="preserve">
+    <value>cbSIn8</value>
+  </data>
+  <data name="&gt;&gt;cbSIn8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn8.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn8.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbSIn1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 31</value>
+  </data>
+  <data name="cbSIn1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn1.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cbSIn1.Text" xml:space="preserve">
+    <value>A0</value>
+  </data>
+  <data name="&gt;&gt;cbSIn1.Name" xml:space="preserve">
+    <value>cbSIn1</value>
+  </data>
+  <data name="&gt;&gt;cbSIn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cbbSIn5.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn5.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn5.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn5.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn5.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn5.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn5.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn5.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn5.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn5.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn5.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn5.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 30</value>
+  </data>
+  <data name="cbbSIn5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn5.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn5.Name" xml:space="preserve">
+    <value>cbbSIn5</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn5.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cbSIn6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 58</value>
+  </data>
+  <data name="cbSIn6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn6.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="cbSIn6.Text" xml:space="preserve">
+    <value>A5</value>
+  </data>
+  <data name="&gt;&gt;cbSIn6.Name" xml:space="preserve">
+    <value>cbSIn6</value>
+  </data>
+  <data name="&gt;&gt;cbSIn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn6.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cbSIn5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 32</value>
+  </data>
+  <data name="cbSIn5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn5.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="cbSIn5.Text" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="&gt;&gt;cbSIn5.Name" xml:space="preserve">
+    <value>cbSIn5</value>
+  </data>
+  <data name="&gt;&gt;cbSIn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn5.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn5.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cbSIn4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn4.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 109</value>
+  </data>
+  <data name="cbSIn4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn4.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="cbSIn4.Text" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn4.Name" xml:space="preserve">
+    <value>cbSIn4</value>
+  </data>
+  <data name="&gt;&gt;cbSIn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn4.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cbbSIn3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn3.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn3.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn3.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn3.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn3.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn3.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn3.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn3.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn3.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn3.Items9" xml:space="preserve">
+    <value>加速度</value>
+  </data>
+  <data name="cbbSIn3.Items10" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 81</value>
+  </data>
+  <data name="cbbSIn3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn3.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn3.Name" xml:space="preserve">
+    <value>cbbSIn3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn3.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="cbbSIn2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbbSIn2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbbSIn2.Items" xml:space="preserve">
+    <value>音</value>
+  </data>
+  <data name="cbbSIn2.Items1" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="cbbSIn2.Items2" xml:space="preserve">
+    <value>赤外近距離</value>
+  </data>
+  <data name="cbbSIn2.Items3" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="cbbSIn2.Items4" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="cbbSIn2.Items5" xml:space="preserve">
+    <value>タッチ</value>
+  </data>
+  <data name="cbbSIn2.Items6" xml:space="preserve">
+    <value>超音波</value>
+  </data>
+  <data name="cbbSIn2.Items7" xml:space="preserve">
+    <value>ジャイロ</value>
+  </data>
+  <data name="cbbSIn2.Items8" xml:space="preserve">
+    <value>赤外線距離</value>
+  </data>
+  <data name="cbbSIn2.Items9" xml:space="preserve">
+    <value>加速度(X軸)</value>
+  </data>
+  <data name="cbbSIn2.Items10" xml:space="preserve">
+    <value>加速度(Y軸)</value>
+  </data>
+  <data name="cbbSIn2.Items11" xml:space="preserve">
+    <value>加速度(Z軸)</value>
+  </data>
+  <data name="cbbSIn2.Items12" xml:space="preserve">
+    <value>磁気</value>
+  </data>
+  <data name="cbbSIn2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 55</value>
+  </data>
+  <data name="cbbSIn2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="cbbSIn2.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn2.Name" xml:space="preserve">
+    <value>cbbSIn2</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbbSIn2.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="cbSIn3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 83</value>
+  </data>
+  <data name="cbSIn3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn3.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="cbSIn3.Text" xml:space="preserve">
+    <value>A2</value>
+  </data>
+  <data name="&gt;&gt;cbSIn3.Name" xml:space="preserve">
+    <value>cbSIn3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn3.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="cbSIn2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbSIn2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbSIn2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 57</value>
+  </data>
+  <data name="cbSIn2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbSIn2.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="cbSIn2.Text" xml:space="preserve">
+    <value>A1</value>
+  </data>
+  <data name="&gt;&gt;cbSIn2.Name" xml:space="preserve">
+    <value>cbSIn2</value>
+  </data>
+  <data name="&gt;&gt;cbSIn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSIn2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cbSIn2.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 96</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>433, 146</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 11.25pt, style=Bold</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>ボタン</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbBIn4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbBIn4.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbBIn4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 49</value>
+  </data>
+  <data name="cbBIn4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbBIn4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cbBIn4.Text" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="&gt;&gt;cbBIn4.Name" xml:space="preserve">
+    <value>cbBIn4</value>
+  </data>
+  <data name="&gt;&gt;cbBIn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbBIn4.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;cbBIn4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbBIn3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbBIn3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbBIn3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 27</value>
+  </data>
+  <data name="cbBIn3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbBIn3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cbBIn3.Text" xml:space="preserve">
+    <value>A2</value>
+  </data>
+  <data name="&gt;&gt;cbBIn3.Name" xml:space="preserve">
+    <value>cbBIn3</value>
+  </data>
+  <data name="&gt;&gt;cbBIn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbBIn3.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;cbBIn3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbBIn2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbBIn2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbBIn2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 49</value>
+  </data>
+  <data name="cbBIn2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbBIn2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbBIn2.Text" xml:space="preserve">
+    <value>A1</value>
+  </data>
+  <data name="&gt;&gt;cbBIn2.Name" xml:space="preserve">
+    <value>cbBIn2</value>
+  </data>
+  <data name="&gt;&gt;cbBIn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbBIn2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;cbBIn2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbBIn1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbBIn1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cbBIn1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="cbBIn1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="cbBIn1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbBIn1.Text" xml:space="preserve">
+    <value>A0</value>
+  </data>
+  <data name="&gt;&gt;cbBIn1.Name" xml:space="preserve">
+    <value>cbBIn1</value>
+  </data>
+  <data name="&gt;&gt;cbBIn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbBIn1.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;cbBIn1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 12</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 78</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btCheckOff.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btCheckOff.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btCheckOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 248</value>
+  </data>
+  <data name="btCheckOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 24</value>
+  </data>
+  <data name="btCheckOff.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="btCheckOff.Text" xml:space="preserve">
+    <value>チェックを全て外す</value>
+  </data>
+  <data name="&gt;&gt;btCheckOff.Name" xml:space="preserve">
+    <value>btCheckOff</value>
+  </data>
+  <data name="&gt;&gt;btCheckOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btCheckOff.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btCheckOff.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>462, 279</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>入出力設定</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Configure</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
