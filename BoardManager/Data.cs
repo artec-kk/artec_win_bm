@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 
 namespace ScratchConnection
@@ -20,7 +15,7 @@ namespace ScratchConnection
     // ---------------------------------------------------------------------
     // ロボット入力センサーのID
     // ---------------------------------------------------------------------
-    enum OptionPartsID : int
+    public enum OptionPartsID : int
     {
         Top = -1,
         // センサーIDの設定
@@ -60,9 +55,13 @@ namespace ScratchConnection
     enum ScartchPartsID : int
     {
         Open = 0x00,            // 開放
+        DC = 0x01,              // DC
+        Servo = 0x02,           // Servo
         LED = 0x03,             // LED
         Buzzer = 0x04,          // ブザー
-        ColorLED = 0x05,        // カラーLED
+        BoardLED = 0x05,
+        //ColorLED = 0x05,        // カラーLED
+        Clock = 0x06,           // 液晶時計
         Light = 0x10,           // 光
         Touch = 0x11,           // タッチ
         Sound = 0x12,           // 音
@@ -74,47 +73,54 @@ namespace ScratchConnection
     // ---------------------------------------------------------------------
     // 多言語対応
     // ---------------------------------------------------------------------
-    class SensorItems
+    public class SensorItems
     {
-        // strOptionPartsは、上にあるOptionPartsIDと整合性が取れる事
-        public string[] strOptionParts = new string[(int)(OptionPartsID.End + 1)] {
-            Properties.Resources.str_parts_sensor_light,   //  光センサー
-            Properties.Resources.str_parts_sensor_touch,   //  タッチセンサー
-            Properties.Resources.str_parts_sensor_sound,   //  音センサー
-            Properties.Resources.str_parts_sensor_ir,      //  赤外線反射センサー
-            Properties.Resources.str_parts_sensor_acc,     //  加速度センサー
-            Properties.Resources.str_parts_dev_led,        //  LED
-            Properties.Resources.str_parts_dev_buzzer,     //  ブザー
-            Properties.Resources.str_parts_dev_colorLed,   //  カラーLED
-            Properties.Resources.str_parts_button1,        //  ボタン1
-            Properties.Resources.str_parts_button2,        //  ボタン2
-            Properties.Resources.str_parts_button3,        //  ボタン3
-            Properties.Resources.str_parts_button4         //  ボタン4
-        };
-        // ひらがな表示用
-        public string[] strOptionPartsHiragana = new string[(int)(OptionPartsID.End + 1)] {
-            "ひかりセンサー",
-            "タッチセンサー",
-            "おとセンサー",
-            "せきがいせんフォトリフレクタ",
-            "かそくどセンサー",
-            "LED",
-            "ブザー",
-            "カラーLED",    // 未使用
-            "ボタン1",
-            "ボタン2",
-            "ボタン3",
-            "ボタン4"
-        };
+        public string[] strOptionParts;
+        public SensorItems(bool hiragana)
+        {
+            if (hiragana)
+            {
+                // ひらがな表示用
+                strOptionParts = new string[(int)(OptionPartsID.End + 1)] {
+                    "ひかりセンサー",
+                    "タッチセンサー",
+                    "おとセンサー",
+                    "せきがいせんフォトリフレクタ",
+                    "かそくどセンサー",
+                    "LED",
+                    "ブザー",
+                    "カラーLED",    // 未使用
+                    "ボタン1",
+                    "ボタン2",
+                    "ボタン3",
+                    "ボタン4"
+                };
+            }
+            else
+            {
+                // strOptionPartsは、上にあるOptionPartsIDと整合性が取れる事
+                strOptionParts = new string[(int)(OptionPartsID.End + 1)] {
+                    Properties.Resources.str_parts_sensor_light,   //  光センサー
+                    Properties.Resources.str_parts_sensor_touch,   //  タッチセンサー
+                    Properties.Resources.str_parts_sensor_sound,   //  音センサー
+                    Properties.Resources.str_parts_sensor_ir,      //  赤外線反射センサー
+                    Properties.Resources.str_parts_sensor_acc,     //  加速度センサー
+                    Properties.Resources.str_parts_dev_led,        //  LED
+                    Properties.Resources.str_parts_dev_buzzer,     //  ブザー
+                    Properties.Resources.str_parts_dev_colorLed,   //  カラーLED
+                    Properties.Resources.str_parts_button1,        //  ボタン1
+                    Properties.Resources.str_parts_button2,        //  ボタン2
+                    Properties.Resources.str_parts_button3,        //  ボタン3
+                    Properties.Resources.str_parts_button4         //  ボタン4
+                };
+            }
+        }
     }
-
     // ---------------------------------------------------------------------
     // ロボット入出力管理
     // ---------------------------------------------------------------------
     public class stRobotIOStatus
     {
-        SensorItems si = new SensorItems();
-
         // DCモータの設定状態
         public bool fDCMotor1Used;
         public bool fDCMotor2Used;
@@ -159,7 +165,7 @@ namespace ScratchConnection
         // 備考         ：
         // Date         ：2013/7/8	0.01	kagayama  新規作成
         // ---------------------------------------------------------------------
-        public void initRobotIOConfiguration()
+        public virtual void initRobotIOConfiguration()
         {
             fDCMotor1Used = true;
             fDCMotor2Used = true;
@@ -209,9 +215,9 @@ namespace ScratchConnection
                 case (int)ScartchPartsID.Buzzer:
                     dat = (int)OptionPartsID.Buzzer;
                     break;
-                case (int)ScartchPartsID.ColorLED:
-                    dat = (int)OptionPartsID.ColorLED;
-                    break;
+                //case (int)ScartchPartsID.ColorLED:
+                //    dat = (int)OptionPartsID.ColorLED;
+                //    break;
                 case (int)ScartchPartsID.Light:
                     dat = (int)OptionPartsID.Light;
                     break;
@@ -233,14 +239,14 @@ namespace ScratchConnection
             return dat;
         }
 
-        private void setButtonState(int i, bool f)
+        protected void setButtonState(int i, bool f)
         {
             if (i == 0) fBtn1Used = f;
             if (i == 1) fBtn2Used = f;
             if (i == 2) fBtn3Used = f;
             if (i == 3) fBtn4Used = f;
         }
-        private void setSensorState(int i, bool f)
+        protected void setSensorState(int i, bool f)
         {
             if (i == 0) fSns1Used = f;
             if (i == 1) fSns2Used = f;
@@ -251,7 +257,7 @@ namespace ScratchConnection
             if (i == 6) fSns7Used = f;
             if (i == 7) fSns8Used = f;
         }
-        private void setSensorKind(int i, int v)
+        protected void setSensorKind(int i, int v)
         {
             if (i == 0) nSns1Kind = v;
             if (i == 1) nSns2Kind = v;
@@ -268,7 +274,7 @@ namespace ScratchConnection
         // 備考         ：
         // Date         ：2013/8/24	0.01	kagayama  新規作成
         // ---------------------------------------------------------------------
-        public void setStatusByte(byte[] scratchData)
+        public virtual void setStatusByte(byte[] scratchData)
         {
             // DCモータの設定 [0, 1]
             fDCMotor1Used = ((scratchData[0] & 0xFF) != 0);    // 下位8ビットが開放(0)でなければ、DCモータが接続されている
@@ -310,7 +316,7 @@ namespace ScratchConnection
         // 備考         ：
         // Date         ：2013/8/24	0.01	kagayama  新規作成
         // ---------------------------------------------------------------------
-        public List<byte> getStatusByte()
+        public virtual List<byte> getStatusByte()
         {
             List<byte> stat = new List<byte>();
             bool[] pinsDCSV = {
@@ -389,6 +395,124 @@ namespace ScratchConnection
         }
     }
 
+    public class stRobotIOStatusLP : stRobotIOStatus
+    {
+        public bool fLED1Used;
+        public bool fLED2Used;
+        public bool fLED3Used;
+        public bool fClockUsed;
+
+        public override void initRobotIOConfiguration()
+        {
+            fDCMotor1Used = false;
+            fDCMotor2Used = false;
+            fSvMotor1Used = false; // D5
+            fSvMotor2Used = false; // D6
+            fSvMotor3Used = false; // D9
+            fSvMotor4Used = true;  // D10
+            fSvMotor5Used = true;  // D11
+            fSvMotor6Used = false;
+            fSvMotor7Used = false;
+            fSvMotor8Used = false;
+            fSns1Used = true;
+            fSns2Used = true;
+            fSns3Used = true;
+            fSns4Used = true;
+            fSns5Used = true;
+            fSns6Used = true;
+            fSns7Used = true;
+            fSns8Used = false;
+            nSns1Kind = (int)OptionPartsID.Light;
+            nSns2Kind = (int)OptionPartsID.Light;
+            nSns3Kind = (int)OptionPartsID.Light;
+            nSns4Kind = (int)OptionPartsID.Light;
+            nSns5Kind = (int)OptionPartsID.LED;
+            nSns6Kind = (int)OptionPartsID.Buzzer;
+            nSns7Kind = (int)OptionPartsID.Light;
+            nSns8Kind = (int)OptionPartsID.Light;
+            fBtn1Used = false;
+            fBtn2Used = false;
+            fBtn3Used = false;
+            fBtn4Used = false;
+            fLED1Used = true;
+            fLED2Used = true;
+            fLED3Used = true;
+            fClockUsed = false;
+        }
+
+        public override void setStatusByte(byte[] scratchData)
+        {
+            // DCモータの設定 [0, 1]
+            fDCMotor1Used = ((scratchData[0] & 0xFF) != 0);    // 下位8ビットが開放(0)でなければ、DCモータが接続されている
+            fDCMotor2Used = ((scratchData[1] & 0xFF) != 0);
+            // サーボモータの設定 [2～9]
+            fSvMotor1Used = ((scratchData[2] & 0xFF) == (byte)ScartchPartsID.Servo); // D5
+            fSvMotor2Used = ((scratchData[3] & 0xFF) == (byte)ScartchPartsID.Servo); // D6
+            fSvMotor3Used = ((scratchData[4] & 0xFF) == (byte)ScartchPartsID.Servo); // D9
+            fSvMotor4Used = ((scratchData[5] & 0xFF) == (byte)ScartchPartsID.Servo); // D10
+            fSvMotor5Used = ((scratchData[6] & 0xFF) == (byte)ScartchPartsID.Servo); // D11
+            fSvMotor6Used = false;
+            fSvMotor7Used = false;
+            fSvMotor8Used = false;
+            // 基板上LEDの設定 [6-8]
+            fLED1Used = ((scratchData[2] & 0xFF) == (byte)ScartchPartsID.BoardLED); // D5
+            fLED2Used = ((scratchData[3] & 0xFF) == (byte)ScartchPartsID.BoardLED); // D6
+            fLED3Used = ((scratchData[4] & 0xFF) == (byte)ScartchPartsID.BoardLED); // D9
+            // センサーピンA0～A7の設定 [10～17]
+            for (int i = 0; i < 8; i++)
+            {
+                byte partsID = (byte)(scratchData[10 + i] & 0xFF);
+                switch (partsID)
+                {
+                    case (byte)ScartchPartsID.Open:  // 開放
+                        if (i < 4) { setButtonState(i, false); }
+                        setSensorState(i, false);
+                        setSensorKind(i, (int)OptionPartsID.Light);   // デフォルト値
+                        break;
+                    case (byte)ScartchPartsID.Button:  // ボタンが設定
+                        if (i < 4) { setButtonState(i, true); }
+                        setSensorState(i, false);
+                        setSensorKind(i, (int)OptionPartsID.Light);   // デフォルト値
+                        break;
+                    default:    // その他
+                        if (i < 4) { setButtonState(i, false); }
+                        setSensorState(i, true);
+                        setSensorKind(i, convertIOConfPartsID(partsID));
+                        break;
+                }
+            }
+            // 液晶時計の設定
+            fClockUsed = ((scratchData[18] & 0xFF) == (byte)ScartchPartsID.Clock); // SPI
+        }
+
+        public override List<byte> getStatusByte()
+        {
+            List<byte> stat = base.getStatusByte();
+
+            stat[2] = fSvMotor1Used ? (byte)ScartchPartsID.Servo : (byte)ScartchPartsID.Open;
+            stat[3] = fSvMotor2Used ? (byte)ScartchPartsID.Servo : (byte)ScartchPartsID.Open;
+            stat[4] = fSvMotor3Used ? (byte)ScartchPartsID.Servo : (byte)ScartchPartsID.Open;
+            stat[5] = fSvMotor4Used ? (byte)ScartchPartsID.Servo : (byte)ScartchPartsID.Open;
+            stat[6] = fSvMotor5Used ? (byte)ScartchPartsID.Servo : (byte)ScartchPartsID.Open;
+            //if (fSvMotor1Used) stat[2] = (byte)ScartchPartsID.Servo;
+            //if (fSvMotor2Used) stat[3] = (byte)ScartchPartsID.Servo;
+            //if (fSvMotor3Used) stat[4] = (byte)ScartchPartsID.Servo;
+            //if (fSvMotor4Used) stat[5] = (byte)ScartchPartsID.Servo;
+            //if (fSvMotor5Used) stat[6] = (byte)ScartchPartsID.Servo;
+
+            if (fLED1Used) stat[2] = (byte)ScartchPartsID.BoardLED;
+            if (fLED2Used) stat[3] = (byte)ScartchPartsID.BoardLED;
+            if (fLED3Used) stat[4] = (byte)ScartchPartsID.BoardLED;
+            stat[7] = (byte)ScartchPartsID.Open;
+            stat[8] = (byte)ScartchPartsID.Open;
+            stat[9] = (byte)ScartchPartsID.Open;
+
+            stat.Add(fClockUsed ? (byte)ScartchPartsID.Clock : (byte)ScartchPartsID.Open);
+
+            return stat;
+        }
+    }
+
     // ---------------------------------------------------------------------
     // 概要	        ：サーボモーターオフセット管理クラス
     // 備考         ：
@@ -398,6 +522,16 @@ namespace ScratchConnection
     {
         int[] offset = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
         DCCalibInfo dcInfo;
+        string fileOffsetDC;
+        string fileOffsetServo;
+
+        public ServoOffset(string dc, string servo)
+        {
+            fileOffsetDC = dc;
+            fileOffsetServo = servo;
+            readDCInfo(dc);
+            readServoInfo(servo);
+        }
 
         public void reset()
         {
@@ -440,6 +574,87 @@ namespace ScratchConnection
         public DCCalibInfo getDCCalibInfo()
         {
             return dcInfo;
+        }
+
+        public void readServoInfo(string file)
+        {
+            int index = 0;                         // 配列用インデックス
+            int pos = 0;                           // 読み込み位置
+            try
+            {
+                using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                {
+                    int fileSize = (int)fs.Length;
+                    byte[] buf = new byte[fileSize];
+                    int readSize;
+                    readSize = fs.Read(buf, 0, fileSize);
+
+                    while (index < 8)
+                    {
+                        int offset = ((sbyte)buf[index]);   // 符号なしバイト整数を符号付き整数に変更
+                        if (offset < -15 || offset > 15) offset = 0;
+                        set(index, offset);
+                        index++;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // ファイルが見つからない場合は何も読み込まない
+                Debug.Write("File Not Found.");
+            }
+        }
+
+        public void readDCInfo(string file)
+        {
+            int index = 0;                         // 配列用インデックス
+            int pos = 0;                           // 読み込み位置
+            try {
+                using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                {
+                    index = 0;
+                    int fileSize = (int)fs.Length;
+                    byte[] buf = new byte[fileSize];
+                    int readSize;
+                    readSize = fs.Read(buf, 0, fileSize);
+                    // DCモーター校正情報
+                    if (readSize >= 2)
+                    {
+                        byte m1Rate = buf[index];
+                        byte m2Rate = buf[index + 1];
+                        if (!(m1Rate > 50 && m1Rate <= 100)) m1Rate = 100; // 1-100以外の場合は100とする
+                        if (!(m2Rate > 50 && m2Rate <= 100)) m2Rate = 100; // 1-100以外の場合は100とする
+
+                        Debug.Write("Read Rate: " + m1Rate + ", " + m2Rate);
+                        setDCCalib(m1Rate, m2Rate);
+                    }
+                    else
+                    {
+                        // ファイルに情報が無い場合は何もしない
+                    }
+                }
+            }
+            catch (Exception e) {
+                // ファイルが見つからない場合は何も読み込まない
+                Debug.Write("File Not Found.");
+            }
+        }
+
+        public void writeCalibInfo()
+        {
+            using (FileStream fs = new FileStream(fileOffsetDC, FileMode.Create, FileAccess.Write))
+            {
+                // 符号なしバイト型でなければファイルに書き込めないため、byte型にキャストする
+                foreach (byte val in getValues())
+                {
+                    fs.WriteByte(val);
+                }
+            }
+            using (FileStream fs = new FileStream(fileOffsetDC, FileMode.Create, FileAccess.Write))
+            {
+                fs.WriteByte(dcInfo.calibM1Rate);
+                fs.WriteByte(dcInfo.calibM2Rate);
+            }
         }
     }
     // ---------------------------------------------------------------------

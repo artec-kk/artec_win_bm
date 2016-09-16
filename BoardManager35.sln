@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardManager", "BoardManager\BoardManager.csproj", "{1C9D2396-5FBF-4E09-A63A-EFABC6699BC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardManager", "BoardManager\BoardManager35.csproj", "{1C9D2396-5FBF-4E09-A63A-EFABC6699BC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardManagerTest", "BoardManagerTest\BoardManagerTest.csproj", "{A48BD445-63FF-4BD6-99AC-EB1AAD1E36B4}"
 EndProject
