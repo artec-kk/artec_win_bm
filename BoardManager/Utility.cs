@@ -76,8 +76,8 @@ namespace ScratchConnection
         // 10: 【オブジェクトコピー】オブジェクトコピーエラー1
         // 11: 【オブジェクトコピー】オブジェクトコピーエラー2
         // 17(b'10001): 【コンパイル】サブルーチンが定義されていません
-        // 18(b'10010): 【コンパイル】繋がっていないブロックが存在します
-        // 20(b'10100): 【コンパイル】０で割ろうとしている処理があります
+        // 18(b'10010): 【コンパイル】同じ名前の関数が複数定義されている
+        // 20(b'10100): 【コンパイル】その他のエラー
         int ErrorNumber = 0;
 
         public Utility(Studuino st)
@@ -127,32 +127,44 @@ namespace ScratchConnection
             {
                 string line = "";
                 error = error.Replace("\r\r\n", "\n");                // 改行コードの修正
-                writeCompileLog("CompileError", error);
 
                 StringReader sr = new StringReader(error);
-                int errorFlag = 0;  // 0x01:サブルーチン、 0x02:ブロック未接続、0x04:0による割り算
+                int errorFlag = 0;  // 0x01:関数未定義、 0x02:関数複数定義、0x04:その他のエラー
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("was not declared in this scope"))
-                    {   // 関数未定義が検出された場合
-                        if ((errorFlag & 0x1) == 0)
-                        {
-                            errorFlag |= 0x1;   // フラグを立てる
-                            errorNumber = 17;
+                    if (line.Contains("error:"))
+                    {
+                        if (line.Contains("was not declared in this scope"))
+                        {   // 関数未定義が検出された場合
+                            if ((errorFlag & 0x1) == 0)
+                            {
+                                errorFlag |= 0x1;   // フラグを立てる
+                            }
                         }
-                    }
-                    else if (line.Contains("error:"))
-                    {   // その他のエラー
-                        if ((errorFlag & 0x2) == 0)
-                        {
-                            errorFlag |= 0x2;
-                            errorNumber = 18;
+                        else if (line.Contains("redefinition of ") || line.Contains("previously defined here"))
+                        {   // 関数の複数定義が検出された場合
+                            if ((errorFlag & 0x2) == 0)
+                            {
+                                errorFlag |= 0x2;
+                            }
+                        }
+                        else
+                        {   // その他のエラー
+                            if ((errorFlag & 0x4) == 0)
+                            {
+                                errorFlag |= 0x4;
+                            }
                         }
                     }
                     else if (line.Contains("warning:"))
                     {
                         // Warningは無視する
                     }
+                }
+                if (errorFlag != 0)
+                {
+                    writeCompileLog("CompileError", error);
+                    errorNumber = 16 + errorFlag;
                 }
             }
             return errorNumber;
