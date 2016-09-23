@@ -43,15 +43,15 @@
             // 
             // Cancel
             // 
-            resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.Name = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
-            resources.ApplyResources(this.OK, "OK");
             this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
             this.OK.UseVisualStyleBackColor = true;
             // 
@@ -64,6 +64,7 @@
             this.Controls.Add(this.OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ConfigureBase";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigureBase_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

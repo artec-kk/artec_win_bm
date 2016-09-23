@@ -50,21 +50,20 @@
             // 
             // btCancel
             // 
-            resources.ApplyResources(this.btCancel, "btCancel");
             this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btCancel, "btCancel");
             this.btCancel.Name = "btCancel";
             this.btCancel.UseVisualStyleBackColor = true;
             // 
             // btOK
             // 
-            resources.ApplyResources(this.btOK, "btOK");
             this.btOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.btOK, "btOK");
             this.btOK.Name = "btOK";
             this.btOK.UseVisualStyleBackColor = true;
             // 
             // gbDC
             // 
-            resources.ApplyResources(this.gbDC, "gbDC");
             this.gbDC.Controls.Add(this.lbDCM2);
             this.gbDC.Controls.Add(this.lbDCM1);
             this.gbDC.Controls.Add(this.lbDCM2Value);
@@ -73,6 +72,7 @@
             this.gbDC.Controls.Add(this.tbM1);
             this.gbDC.Controls.Add(this.btDCCalibStop);
             this.gbDC.Controls.Add(this.btDCCalibStart);
+            resources.ApplyResources(this.gbDC, "gbDC");
             this.gbDC.Name = "gbDC";
             this.gbDC.TabStop = false;
             // 
@@ -130,8 +130,8 @@
             // 
             // gbServo
             // 
-            resources.ApplyResources(this.gbServo, "gbServo");
             this.gbServo.Controls.Add(this.btReset);
+            resources.ApplyResources(this.gbServo, "gbServo");
             this.gbServo.Name = "gbServo";
             this.gbServo.TabStop = false;
             // 
@@ -155,6 +155,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CalibrationBase";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalibrationBase_FormClosing);
             this.gbDC.ResumeLayout(false);
             this.gbDC.PerformLayout();
