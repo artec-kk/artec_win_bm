@@ -710,7 +710,8 @@ namespace ScratchConnection
             }
 
             Debug.WriteLine("BoardType changed: " + currentBT.id);
-            sendMessageToBPE(currentBT.id.ToString());
+            if(stream != null)
+                sendMessageToBPE(currentBT.id.ToString());
         }
 
         #region 【処理】 テストモード

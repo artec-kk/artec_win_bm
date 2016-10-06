@@ -23,6 +23,10 @@ namespace ScratchConnection
             {
                 util.changeLanguage(args[0]);
             }
+            if (args.Length > 1)
+            {
+                util.changeBoardType(int.Parse(args[1]));
+            }
 
             // 入出力設定、モーター校正フォームが初回表示時にアクティブにならないことを回避するための処理。
             // ダミーでフォームを表示させてすぐに消す。
