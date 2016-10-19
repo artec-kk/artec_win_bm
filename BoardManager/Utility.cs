@@ -1433,6 +1433,7 @@ namespace ScratchConnection
         /// <param name="socket">BPEとの通信用ストリーム</param>
         public void changeLanguage(String lang)
         {
+            hiragana = false;
             if (lang == "ja_HIRA")
             {
                 hiragana = true;
