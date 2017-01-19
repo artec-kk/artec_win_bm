@@ -20,11 +20,12 @@ namespace ScratchConnection.Forms
             InitializeComponent();
         }
 
-        public CalibrationBase(ServoOffset offsetInfo, stRobotIOStatus io)
+        public CalibrationBase(ServoOffset offsetInfo, stRobotIOStatus io, bool hiragana = false)
             : this()
         {
             this.offsetInfo = offsetInfo;
             this.io = io;
+            if (hiragana) this.Load += new EventHandler(CalibrationBase_Load);
 
             // DCモーター校正メニュー初期化
             byte m1Rate = offsetInfo.getDCCalibInfo().calibM1Rate;
@@ -41,6 +42,11 @@ namespace ScratchConnection.Forms
 
             // M1/M2どちらかが未使用の場合は機能をオフにする
             if (!(io.fDCMotor1Used && io.fDCMotor2Used)) gbDC.Enabled = false;
+        }
+
+        void CalibrationBase_Load(object sender, EventArgs e)
+        {
+            convertToHiragana();
         }
 
         void tb_ValueChanged(object sender, EventArgs e)
@@ -191,6 +197,18 @@ namespace ScratchConnection.Forms
         /// </summary>
         protected virtual void resetAngle()
         {
+        }
+
+        /// <summary>
+        /// ひらがな変換処理。
+        /// </summary>
+        protected virtual void convertToHiragana()
+        {
+            this.Text = "モーターこうせい";
+            this.gbServo.Text = "サーボモーターこうせい";
+            this.gbDC.Text = "DCモーターこうせい";
+            this.btDCCalibStart.Text = "かいてん";
+            this.btDCCalibStop.Text = "ていし";
         }
     }
 }

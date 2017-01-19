@@ -15,8 +15,8 @@ namespace ScratchConnection.Forms
         TestModeCommunication tcom;
         bool canSend = true;
 
-        public CalibrationLP(ServoOffset svoff, stRobotIOStatus io, TestModeCommunication tcom)
-            : base(svoff, io)
+        public CalibrationLP(ServoOffset svoff, stRobotIOStatus io, TestModeCommunication tcom, bool hiragana = false)
+            : base(svoff, io, hiragana)
         {
             InitializeComponent();
 

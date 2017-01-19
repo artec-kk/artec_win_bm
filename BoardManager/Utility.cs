@@ -1406,12 +1406,11 @@ namespace ScratchConnection
             CalibrationBase calib;
             if (currentBT.Equals(BoardType.STUDUINO_MINI))
             {
-                calib = new CalibrationLP(offset, io, tcom);
+                calib = new CalibrationLP(offset, io, tcom, hiragana);
             }
             else
             {
-                //pm.openCOMPort();
-                calib = new CalibrationST(offset, io, pm);
+                calib = new CalibrationST(offset, io, pm, hiragana);
             }
             return calib;
         }

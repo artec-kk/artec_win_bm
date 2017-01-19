@@ -27,5 +27,10 @@ namespace ScratchConnection.Forms
         {
             InitializeComponent();
         }
+
+        public void convertToHiragana()
+        {
+            lbDegree.Text = "ど";
+        }
     }
 }

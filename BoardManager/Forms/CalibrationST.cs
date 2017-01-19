@@ -17,8 +17,8 @@ namespace ScratchConnection.Forms
         TestModeCommand comgen;
         bool canSend = true;
 
-        public CalibrationST(ServoOffset offset, stRobotIOStatus io, ICommandSender com)
-            : base(offset, io)
+        public CalibrationST(ServoOffset offset, stRobotIOStatus io, ICommandSender com, bool hiragana = false)
+            : base(offset, io, hiragana)
         {
             InitializeComponent();
 
@@ -153,6 +153,19 @@ namespace ScratchConnection.Forms
             if (saD4.Enabled) saD4.nudAngle.Value = 0;
             if (saD7.Enabled) saD7.nudAngle.Value = 0;
             if (saD8.Enabled) saD8.nudAngle.Value = 0;
+        }
+
+        protected override void convertToHiragana()
+        {
+            base.convertToHiragana();
+            saD9.convertToHiragana();
+            saD10.convertToHiragana();
+            saD11.convertToHiragana();
+            saD12.convertToHiragana();
+            saD2.convertToHiragana();
+            saD4.convertToHiragana();
+            saD7.convertToHiragana();
+            saD8.convertToHiragana();
         }
 
         private void CalibrationST_FormClosing(object sender, FormClosingEventArgs e)
