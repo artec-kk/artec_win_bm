@@ -958,6 +958,7 @@ namespace ScratchConnection
         // Date  : 2014/02/25 : 0.95 kawase    新規作成
         //---------------------------------------------------------------------
         // サーボモーターのオフセット情報を読み込む
+        [Obsolete("初期のメソッドのため使用不可。calibMotorを使用する。", true)]
         public void setServomotorOffset(int lang = 0)
         {
             // Studuino miniの場合、リセットが押されるのを待つ
@@ -1153,12 +1154,6 @@ namespace ScratchConnection
         /// <param name="lang"></param>
         public void calibMotor(int lang = 0)
         {
-            // Studuinoへの対応が完了するまで以前のメソッドを使用する
-            if (currentBT.Equals(BoardType.STUDUINO))
-            {
-                setServomotorOffset(lang);
-                return;
-            }
             //// -----------------------------------------------------------------
             //// 入出力情報を読み込む
             //// -----------------------------------------------------------------
@@ -1179,57 +1174,75 @@ namespace ScratchConnection
                 return;
             }
 
-            sendMessageToBPE("OK");
-
-            if (currentBT.Equals(BoardType.STUDUINO_AND_MINI))
+            if (currentBT.Equals(BoardType.STUDUINO))
             {
-                // 再びStuduino miniにデータパススルーモードを転送
-                int err = 0;
-                for (int i = 0; i < 10; i++)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                    err = transferBootloadHID(@st.TestModePath + "testmode_mini2.hex");
-                    if (err == 0)
-                    {
-                        ErrorNumber = err;
-                        break;
-                    }
-
-                    // リトライ回数を越えてエラーが出る場合
-                    if (err == 1)
-                    {
-                        ErrorNumber = err;  // 接続エラー
-                    }
-                    else if (err == 2)
-                    {
-                        ErrorNumber = 101;  // タイムアウトエラー
-                    }
-                    else //if (err == 4)
-                    {
-                        ErrorNumber = 100;  // 転送エラー
-                    }
-                }
-                if (ErrorNumber != 0)
-                {
+                // -------------------------------------------------------------
+                // COMポートをオープンする
+                // -------------------------------------------------------------
+                bool isOpen = pm.openCOMPort();
+                if (!isOpen)
+                {   // COMポートのオープンに失敗
                     // 接続ポート情報を送信
                     sendMessageToBPE("ERR");
                     // エラー情報を送信
                     sendMessageToBPE(ErrorNumber.ToString());
                     // 転送完了通知を送信
                     sendMessageToBPE("FINISH");
-                    return;
-                }
 
-                // 転送完了を尊信
-                Debug.WriteLine("Port Info");
+                    return; // 処理終了
+                }
+                sendMessageToBPE("CALIBRATE");
+            }
+            else
+            {
                 sendMessageToBPE("OK");
+
+                if (currentBT.Equals(BoardType.STUDUINO_AND_MINI))
+                {
+                    // 再びStuduino miniにデータパススルーモードを転送
+                    int err = 0;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        err = transferBootloadHID(@st.TestModePath + "testmode_mini2.hex");
+                        if (err == 0)
+                        {
+                            ErrorNumber = err;
+                            break;
+                        }
+
+                        // リトライ回数を越えてエラーが出る場合
+                        if (err == 1)
+                        {
+                            ErrorNumber = err;  // 接続エラー
+                        }
+                        else if (err == 2)
+                        {
+                            ErrorNumber = 101;  // タイムアウトエラー
+                        }
+                        else //if (err == 4)
+                        {
+                            ErrorNumber = 100;  // 転送エラー
+                        }
+                    }
+                    if (ErrorNumber != 0)
+                    {
+                        // 接続ポート情報を送信
+                        sendMessageToBPE("ERR");
+                        // エラー情報を送信
+                        sendMessageToBPE(ErrorNumber.ToString());
+                        // 転送完了通知を送信
+                        sendMessageToBPE("FINISH");
+                        return;
+                    }
+
+                    // 転送完了を尊信
+                    Debug.WriteLine("Port Info");
+                    sendMessageToBPE("OK");
+                }
             }
 
-            // -------------------------------------------------------------
-            // COMポートをオープンする
-            // -------------------------------------------------------------
             // ひらがなの場合のみ言語指定してフォームを作成する
-            //using (CalibrationBase calib = hiragana ? new CalibrationLP(svOffset, io, tcom) : new CalibrationLP(svOffset, io, tcom))
             using (CalibrationBase calib = getCalib(svOffset, io, hiragana))
             {
                 // Studuino miniの場合、基板に通信開始の合図を送る
@@ -1258,23 +1271,6 @@ namespace ScratchConnection
                     }
                 }
 
-                //System.Threading.Thread.Sleep(2000);	// １秒停止
-                //tcom.sendPortInit();
-
-                using (FileStream fs = new FileStream("Board.cfg", FileMode.Open, FileAccess.Read))
-                {
-                    byte[] buf = new byte[10];
-                    int readSize;
-                    readSize = fs.Read(buf, 0, 10);
-
-                    for (byte i = 0; i < 10; i++)
-                    {
-                        Debug.Write(buf[i] + " ");
-                        tcom.sendInitCommand(i, (PartID)buf[i]);
-                    }
-                }
-
-
                 // -------------------------------------------------------------
                 // サーボモータ校正ダイアログを表示する
                 // -------------------------------------------------------------
@@ -1295,8 +1291,16 @@ namespace ScratchConnection
                         fs.WriteByte(svOffset.getDCCalibInfo().calibM1Rate);
                         fs.WriteByte(svOffset.getDCCalibInfo().calibM2Rate);
                     }
+                    sendMessageToBPE("FINISH");
                 }
-                sendMessageToBPE("FINISH");
+                else if (res == DialogResult.Cancel)
+                {
+                    sendMessageToBPE("FINISH");
+                }
+                else // if(res == DialogResult.Abort)
+                {
+                    sendMessageToBPE("ERR");
+                }
             }
         }
 
@@ -1406,7 +1410,8 @@ namespace ScratchConnection
             }
             else
             {
-                calib = new CalibrationST(offset, io, tcom);
+                //pm.openCOMPort();
+                calib = new CalibrationST(offset, io, pm);
             }
             return calib;
         }
@@ -1490,9 +1495,11 @@ namespace ScratchConnection
     /// <summary>
     /// Studuinoが接続されているCOMポートの管理、検索等を行う。
     /// </summary>
-    class PortManager
+    class PortManager: ICommandSender
     {
         private string lastOpenedPort;
+        private SerialPort port;
+        System.Timers.Timer monitorDisconnection;
 
         /// <summary>
         /// 最後に接続したポートが有効か確認し、有効であればそのポート名を返す。無効ならWMIで検索。
@@ -1584,6 +1591,90 @@ namespace ScratchConnection
                 }
             }
             return comPortName;
+        }
+
+        public bool openCOMPort()
+        {
+            string comPort = getStuduinoPort();
+            // -----------------------------------------------------------------
+            // シリアルポートを開く
+            // -----------------------------------------------------------------
+            try
+            {
+                port = new SerialPort(comPort, 38400);
+                // Arduinoとシリアル通信する場合、DtrEnableをtrueに設定した場合、
+                // 基板にソフトウェアリセットがかかる。DtrEnableをfalseに設定す
+                // ればソフトウェアリセットはかかりません。
+                port.DtrEnable = true;
+                port.Open();
+
+                port.DtrEnable = false;
+                port.DiscardOutBuffer();
+
+                monitorDisconnection = new System.Timers.Timer();
+                monitorDisconnection.Interval = 100;
+                monitorDisconnection.Elapsed += new System.Timers.ElapsedEventHandler(monitorDisconnection_Elapsed);
+                monitorDisconnection.Start();
+            }
+            // ポートが開かれていない場合(物理的に接続が切断された場合)
+            catch (UnauthorizedAccessException)
+            {   // 例外内容：ポートへのアクセスが拒否されています。
+                MessageBox.Show(Properties.Resources.str_msg_err_miscon1 +
+                    Environment.NewLine +
+                    Properties.Resources.str_msg_err_miscon2);
+                return false;
+            }
+            // 物理的に接続が切断された場合
+            catch (IOException)
+            {   // 例外内容：ポートが無効状態です。
+                MessageBox.Show(Properties.Resources.str_msg_err_miscon1 +
+                    Environment.NewLine +
+                    Properties.Resources.str_msg_err_miscon3);
+                return false;
+            }
+            // 予期せぬ例外処理
+            catch (Exception e)
+            {   // ログを取る
+            }
+
+            return true;
+        }
+
+        public void closeCOMPort()
+        {
+            monitorDisconnection.Stop();
+            port.Close();
+        }
+
+        void monitorDisconnection_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Debug.WriteLine("timer elapsed");
+            if (!port.IsOpen)
+            {
+                monitorDisconnection.Stop();
+                OnDisconnected(e);
+                Debug.Write("Disconnected");
+            }
+        }
+
+        public void sendCommand(byte[] data)
+        {
+            try
+            {
+                port.Write(data, 0, data.Length);
+                Debug.WriteLine("send: " + data);
+            }
+            catch (InvalidOperationException)
+            {
+            }
+        }
+
+        public event EventHandler Disconnected;
+
+        protected virtual void OnDisconnected(EventArgs e)
+        {
+            if (Disconnected != null)
+                Disconnected(this, e);
         }
     }
 

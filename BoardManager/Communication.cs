@@ -6,6 +6,7 @@ using System.IO;
 using System.Management;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO.Ports;
 
 namespace Artec
 {
@@ -178,7 +179,7 @@ namespace Artec
         }
 
         /// <summary>
-        /// テストモード中のコマンドのやり取り、センサー値の送信などを担当する
+        /// テストモード中のコマンドのやり取り、センサー値の送信などを担当する(Studuino mini用)
         /// </summary>
         public class TestModeCommunication : ICommandSender
         {
@@ -515,6 +516,9 @@ namespace Artec
             {
                 this.sendCommand(data);
             }
+
+
+            public event EventHandler Disconnected;
         }
 
         /// <summary>
@@ -678,6 +682,7 @@ namespace Artec
         public interface ICommandSender
         {
             void sendCommand(byte[] data);
+            event EventHandler Disconnected;
         }
     }
 

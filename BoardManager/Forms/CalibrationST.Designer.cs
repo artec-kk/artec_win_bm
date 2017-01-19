@@ -129,8 +129,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 370);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CalibrationST";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalibrationST_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tbM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbM1)).EndInit();
             this.gbServo.ResumeLayout(false);

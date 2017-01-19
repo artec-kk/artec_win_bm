@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Artec.TestModeCommunication;
+using System.IO;
 
 namespace ScratchConnection.Forms
 {
@@ -50,6 +51,22 @@ namespace ScratchConnection.Forms
             saD4.Enabled = io.fSvMotor6Used;
             saD7.Enabled = io.fSvMotor7Used;
             saD8.Enabled = io.fSvMotor8Used;
+
+            com.Disconnected += new EventHandler(com_Disconnected);
+        }
+
+        delegate void CloseDelegate();
+
+        void com_Disconnected(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Abort;
+            try
+            {
+                Invoke(new CloseDelegate(this.Close));
+            }
+            catch (Exception)
+            {
+            }
         }
 
         void nudAngle_ValueChanged(object sender, EventArgs e)
@@ -72,13 +89,6 @@ namespace ScratchConnection.Forms
 
                 // サーボモーターに角度情報を送信
                 setServoMotor(port, offset);
-                //if (setServoMotor(port, offset) != RET_SUCCESS)
-                //{   // 通信が切断された場合
-                //    // エラーコードを設定して、キャンセルボタンをクリック
-                //    btCancel.PerformClick();
-                //    errorCode = (byte)ConnectingCondition.DISCONNECT;
-                //    isConnectiong = false;  // 通信切断状態を設定
-                //}
                 canSend = true;
             }
         }
@@ -86,8 +96,6 @@ namespace ScratchConnection.Forms
         void setServoMotor(byte port, int offset)
         {
             byte[] args = { port, (byte)(90 + offset) };
-            //tcom.sendCommand(CommandID.SV, port, angle);
-            //com.sendCommand(data);
             com.sendCommand(comgen.actCommand(CommandID.SV, args));
         }
 
@@ -99,9 +107,6 @@ namespace ScratchConnection.Forms
             args[0] = port;
             args[1] = onoff ? (byte)0x01 : (byte)0x02;   // 0x01: 回転 0x02: 停止
             args[2] = 0;                                 // 回転:: 0:正転 1:逆転 | 停止:: 0:ブレーキあり 1:ブレーキなし
-            //PinID pin = (port == 0) ? PinID.M1 : PinID.M2;
-            //setDCMotorPower(port, 100);
-            //tcom.sendCommand(CommandID.DC, pin, args);
             com.sendCommand(comgen.actCommand(CommandID.DC, args));
         }
 
@@ -117,7 +122,6 @@ namespace ScratchConnection.Forms
                 args[1] = (byte)0x04;                        // 0x04: 速度
                 args[2] = power;
                 PinID pin = (port == 0) ? PinID.M1 : PinID.M2;
-                //tcom.sendCommand(CommandID.DC, pin, args);
                 com.sendCommand(comgen.actCommand(CommandID.DC, args));
                 canSend = true;
             }
@@ -149,6 +153,12 @@ namespace ScratchConnection.Forms
             if (saD4.Enabled) saD4.nudAngle.Value = 0;
             if (saD7.Enabled) saD7.nudAngle.Value = 0;
             if (saD8.Enabled) saD8.nudAngle.Value = 0;
+        }
+
+        private void CalibrationST_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            com.Disconnected -= new EventHandler(com_Disconnected);
+            ((PortManager)com).closeCOMPort();
         }
     }
 }
