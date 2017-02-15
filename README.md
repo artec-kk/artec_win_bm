@@ -2,7 +2,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 ## 本ソフトウェア
-本ソフトウェアは、株式会社アーテックが開発・販売しておりますマイコンボード"Studuino"、ならびにロボットプログラミング教材"ArtecRobo"用のブロックプログラミング環境ソフトウェアとマイコンボード間の通信のためのソースコードです。
+本ソフトウェアは、株式会社アーテックが開発・販売しておりますマイコンボード"Studuino/Studuino mini"、ならびにロボットプログラミング教材"ArtecRobo"用のブロックプログラミング環境ソフトウェアとマイコンボード間の通信のためのソースコードです。
 
 ## 言語
 当ソフトウェアはVisual Studio/C#で開発されています。
