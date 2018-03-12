@@ -131,6 +131,7 @@
             this.ClientSize = new System.Drawing.Size(307, 370);
             this.Name = "CalibrationST";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalibrationST_FormClosing);
+            this.Load += new System.EventHandler(this.CalibrationST_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbM1)).EndInit();
             this.gbServo.ResumeLayout(false);

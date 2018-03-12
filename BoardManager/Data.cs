@@ -24,7 +24,9 @@ namespace ScratchConnection
         Touch,                  //  1: タッチ
         Sound,                  //  2; 音
         IRReflect,              //  3: 赤外線近距離
-        Accelerometer,         //  4: 加速度(X軸)
+        Temperature,            //   : 温度センサー
+        Gyro,                   //   : ジャイロセンサー
+        Accelerometer,          //  4: 加速度(X軸)
         SensorEnd = Accelerometer,
         // LED IDの設定
         LEDTop = SensorEnd + 1, // LEDIDの先頭
@@ -67,7 +69,9 @@ namespace ScratchConnection
         Sound = 0x12,           // 音
         IRReflect = 0x13,       // 赤外線近距離
         Accelerometer = 0x14,   // 加速度(X軸)
-        Button = 0x15             // ボタン
+        Button = 0x15,          // ボタン
+        Temperature = 0x18,      // 温度センサー
+        Gyro = 0x19
     }
 
     // ---------------------------------------------------------------------
@@ -86,6 +90,8 @@ namespace ScratchConnection
                     "タッチセンサー",
                     "おとセンサー",
                     "せきがいせんフォトリフレクタ",
+                    "おんどセンサー",
+                    "ジャイロセンサー",
                     "かそくどセンサー",
                     "LED",
                     "ブザー",
@@ -104,6 +110,8 @@ namespace ScratchConnection
                     Properties.Resources.str_parts_sensor_touch,   //  タッチセンサー
                     Properties.Resources.str_parts_sensor_sound,   //  音センサー
                     Properties.Resources.str_parts_sensor_ir,      //  赤外線反射センサー
+                    Properties.Resources.str_parts_sensor_temp,      //  温度センサー
+                    Properties.Resources.str_parts_sensor_gyro,
                     Properties.Resources.str_parts_sensor_acc,     //  加速度センサー
                     Properties.Resources.str_parts_dev_led,        //  LED
                     Properties.Resources.str_parts_dev_buzzer,     //  ブザー
@@ -230,8 +238,14 @@ namespace ScratchConnection
                 case (int)ScartchPartsID.IRReflect:
                     dat = (int)OptionPartsID.IRReflect;
                     break;
+                case (int)ScartchPartsID.Temperature:
+                    dat = (int)OptionPartsID.Temperature;
+                    break;
                 case (int)ScartchPartsID.Accelerometer:
                     dat = (int)OptionPartsID.Accelerometer;
+                    break;
+                case (int)ScartchPartsID.Gyro:
+                    dat = (int)OptionPartsID.Gyro;
                     break;
                 default:
                     break;
@@ -379,6 +393,9 @@ namespace ScratchConnection
                                 break;
                             case (int)OptionPartsID.IRReflect:
                                 dat = (byte)0x13;
+                                break;
+                            case (int)OptionPartsID.Temperature:
+                                dat = (byte)0x18;
                                 break;
                             case (int)OptionPartsID.Accelerometer:
                                 dat = (byte)0x14;
@@ -622,8 +639,8 @@ namespace ScratchConnection
                     {
                         byte m1Rate = buf[index];
                         byte m2Rate = buf[index + 1];
-                        if (!(m1Rate > 50 && m1Rate <= 100)) m1Rate = 100; // 1-100以外の場合は100とする
-                        if (!(m2Rate > 50 && m2Rate <= 100)) m2Rate = 100; // 1-100以外の場合は100とする
+                        if (!(m1Rate >= 50 && m1Rate <= 100)) m1Rate = 100; // 1-100以外の場合は100とする
+                        if (!(m2Rate >= 50 && m2Rate <= 100)) m2Rate = 100; // 1-100以外の場合は100とする
 
                         Debug.Write("Read Rate: " + m1Rate + ", " + m2Rate);
                         setDCCalib(m1Rate, m2Rate);

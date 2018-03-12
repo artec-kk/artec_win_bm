@@ -585,6 +585,15 @@ namespace ScratchConnection.Properties {
         }
         
         /// <summary>
+        ///   ジャイロセンサー に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string str_parts_sensor_gyro {
+            get {
+                return ResourceManager.GetString("str_parts_sensor_gyro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   赤外線フォトリフレクタ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string str_parts_sensor_ir {
@@ -608,6 +617,15 @@ namespace ScratchConnection.Properties {
         internal static string str_parts_sensor_sound {
             get {
                 return ResourceManager.GetString("str_parts_sensor_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   温度センサー に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string str_parts_sensor_temp {
+            get {
+                return ResourceManager.GetString("str_parts_sensor_temp", resourceCulture);
             }
         }
         

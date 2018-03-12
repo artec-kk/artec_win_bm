@@ -302,6 +302,9 @@ reset Studuino, and restart this software.</value>
   <data name="str_parts_sensor_sound" xml:space="preserve">
     <value>Sound sensor</value>
   </data>
+  <data name="str_parts_sensor_temp" xml:space="preserve">
+    <value>Temperature sensor</value>
+  </data>
   <data name="str_parts_sensor_touch" xml:space="preserve">
     <value>Touch sensor</value>
   </data>

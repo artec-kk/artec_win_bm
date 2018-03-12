@@ -301,6 +301,9 @@
   <data name="str_parts_sensor_sound" xml:space="preserve">
     <value>声音传感器</value>
   </data>
+  <data name="str_parts_sensor_temp" xml:space="preserve">
+    <value>温度传感器</value>
+  </data>
   <data name="str_parts_sensor_touch" xml:space="preserve">
     <value>触摸传感器</value>
   </data>

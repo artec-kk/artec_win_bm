@@ -1,4 +1,7 @@
-﻿namespace Artec
+﻿using ScratchConnection;
+using System;
+
+namespace Artec
 {
     namespace BuildConst
     {
@@ -10,12 +13,28 @@
             // テストモード・モーター校正用設定
             public virtual string TestModeFile       // テストモード用プログラム
             {
-                get { return "ar.cpp.hex"; }
+                get {
+                    if(boardType.Equals(BoardType.STUDUINO_MINI))
+                    {
+                        return "testmode_mini.hex";
+                    }
+                    return "ar.cpp.hex";
+                }
             }
             //public readonly  string SVCalibrationFile = "calibration.cpp.hex";   // サーボモーター角度校正用プログラム
             public virtual string SVCalibrationFile  // モーター角度校正用プログラム
             {
-                get { return "calibration.cpp.hex"; }
+                get {
+                    if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    {
+                        return "testmode_mini.hex";
+                    }
+                    if(boardType.Equals(BoardType.STUDUINO_AND_MINI))
+                    {
+                        return "ss38400.hex";
+                    }
+                    return "calibration.cpp.hex";
+                }
             }
             public readonly  string TestModePath = @".\etc\";      // テストモード用プログラムのパス
 
@@ -31,7 +50,14 @@
             //public readonly string CompilerOption = "-c -g -Os -Wall -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega168 -DF_CPU=12000000L -MMD -DUSB_VID=null -DUSB_PID=null -DARDUINO=101";
             public virtual string CompilerOption
             {
-                get { return "-c -g -Os -Wall -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega168 -DF_CPU=8000000L -MMD -DUSB_VID=null -DUSB_PID=null -DARDUINO=101"; }
+                get {
+                    //if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    //{
+                    //    return "-c -g -Os -Wall -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega168 -DF_CPU=12000000L -MMD -DUSB_VID=null -DUSB_PID=null -DARDUINO=101";
+                    //}
+                    //return "-c -g -Os -Wall -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega168 -DF_CPU=8000000L -MMD -DUSB_VID=null -DUSB_PID=null -DARDUINO=101";
+                    return "-c -g -Os -Wall -fno-exceptions -ffunction-sections -fdata-sections -mmcu=" + boardType.mcu.optionMCU + " -DF_CPU=" + boardType.frequency + "L -MMD -DUSB_VID=null -DUSB_PID=null -DARDUINO=101";
+                }
             }
             public virtual string[] IncludeFiles
             {
@@ -44,6 +70,7 @@
                         @"libraries\Wire",
                         @"libraries\Wire\utility",
                         @"libraries\MMA8653",
+                        @"libraries\MPU6050",
                         @"libraries\Clock",
                         @"libraries\Studuino"};
                 }
@@ -63,7 +90,7 @@
                 get { return @"build\" + SourceFile + ".o"; }
             }
 
-            public virtual string[] SystemObjectFiles
+            public virtual string[] SystemObjectFilesV1
             {
                 get
                 {
@@ -72,9 +99,24 @@
                         @"build\MMA8653\MMA8653.cpp.o",
                         @"build\Wire\Wire.cpp.o",
                         @"build\Wire\utility\twi.c.o",
-                        @"build\Studuino\Studuino.cpp.o",};
+                        @"build\Studuino\Studuino.cppforV1.o",};
                 }
             }
+
+            public virtual string[] SystemObjectFilesGyro
+            {
+                get
+                {
+                    return new string[]{
+                        @"build\Servo\Servo.cpp.o",
+                        @"build\MPU6050\I2Cdev.cpp.o",
+                        @"build\MPU6050\MPU6050.cpp.o",
+                        @"build\Wire\Wire.cpp.o",
+                        @"build\Wire\utility\twi.c.o",
+                        @"build\Studuino\Studuino.cppforGyro.o",};
+                }
+            }
+
             //public readonly  string[] SystemObjectFiles = {
             //    @"build\Servo\Servo.cpp.o",
             //    @"build\MMA8653\MMA8653.cpp.o",
@@ -106,12 +148,25 @@
             //public readonly string ArchiverFile = @"build\core.a";
             public virtual string ArchiverFile
             {
-                get { return @"build\core.a"; }
+                get {
+                    if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    {
+                        return @"build\core_mini.a";
+                    }
+                    return @"build\core.a";
+                }
             }
 
             // リンカコマンドの設定
             public readonly  string Linker = @"hardware\tools\avr\bin\avr-gcc.exe";
-            public readonly  string LinkerOption = "-Os -Wl,--gc-sections -mmcu=atmega168";
+            //public readonly  string LinkerOption = "-Os -Wl,--gc-sections -mmcu=atmega168";
+            public string LinkerOption
+            {
+                get
+                {
+                    return "-Os -Wl,--gc-sections -mmcu=" + boardType.mcu.optionMCU;
+                }
+            }
             public readonly  string LinkFile = @"build\Servo\Servo.cpp.o";
             //public readonly  string ElfFile = @"build\" + SourceFile + ".elf";
             public string ElfFile
@@ -140,14 +195,33 @@
             //public readonly string Transfer = @"bootloadHID.exe";
             public virtual string Transfer
             {
-                get { return @"hardware\tools\avr\bin\avrdude.exe"; }
+                get
+                {
+                    if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    {
+                        return @"bootloadHID.exe";
+                    }
+                    if (boardType.Equals(BoardType.STUDUINO_AND_MINI))
+                    {
+                        return @"hidspx-gcc.exe";
+                    }
+                    return @"hardware\tools\avr\bin\avrdude.exe";
+                }
             }
             public readonly string ConfFile = @"hardware\tools\avr\etc\avrdude.conf";
             //public readonly string TransferOption = @"-v -v -v -v -patmega168 -carduino -b115200 -D -V";
             //public readonly string TransferOption = @"-r";
             public virtual string TransferOption
             {
-                get { return @"-q -q -patmega168 -carduino -b115200 -D -V"; }
+                get
+                {
+                    if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    {
+                        return @"-r";
+                    }
+                    //return @"-q -q -p" + boardType.mcu.optionMCU +" - carduino -b115200 -D -V";
+                    return @"-q -q -p" + boardType.mcu.optionMCU + " -carduino -b115200 -D -V";
+                }
             }
 
             // ダンプコマンドの設定
@@ -159,13 +233,30 @@
             //public readonly  int MAXPROGRAMSIZE = 15872;   // 15.5kB (Flashサイズ16kB - ブートローダー領域0.5kB)
             public virtual int MAXPROGRAMSIZE        // 15.5kB (Flashサイズ16kB - ブートローダー領域0.5kB)
             {
-                get { return 15872; }
+                get {
+                    //if (boardType.Equals(BoardType.STUDUINO_MINI))
+                    //{
+                    //    return 14336;
+                    //}
+                    //return 15872;
+                    return boardType.MaxProgramSize;
+                }
+            }
+
+            private BoardType boardType;
+
+            public Studuino() { }
+
+            public Studuino(BoardType type)
+            {
+                this.boardType = type;
             }
         }
-
+#if False
         /// <summary>
         /// ArduinoIDE1.6.9に含まれるavr-toolに合わせたビルドオプション
         /// </summary>
+        [Obsolete]
         public class Studuino10609 : Studuino
         {
             public override string CompilerOption
@@ -210,6 +301,7 @@
             }
         }
 
+        [Obsolete]
         public class StuduinoLP : Studuino
         {
             public override string TestModeFile      // テストモード用プログラム
@@ -260,6 +352,8 @@
                 }
             }
         }
+
+        [Obsolete]
         public class StuduinoLP10609 : StuduinoLP
         {
             public override string CompilerOption
@@ -285,6 +379,7 @@
             }
         }
 
+        [Obsolete]
         public class StuduinoAndMini : Studuino
         {
             public override string SVCalibrationFile // モーター校正用プログラム
@@ -302,5 +397,6 @@
                 }
             }
         }
+#endif
     }
 }

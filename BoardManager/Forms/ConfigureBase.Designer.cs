@@ -43,15 +43,15 @@
             // 
             // Cancel
             // 
-            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.Cancel, "Cancel");
+            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.Name = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
-            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.OK, "OK");
+            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OK.Name = "OK";
             this.OK.UseVisualStyleBackColor = true;
             // 

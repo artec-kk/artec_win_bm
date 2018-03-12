@@ -371,4 +371,10 @@ Studuinoをリセットして、プログラミング環境を再度起動して
   <data name="str_msg_err_wmi" xml:space="preserve">
     <value>WMIサービスが停止している可能性があります。COMポートの自動取得が出来ないため、ダイアログから使用するCOMポートを選択してください。</value>
   </data>
+  <data name="str_parts_sensor_temp" xml:space="preserve">
+    <value>温度センサー</value>
+  </data>
+  <data name="str_parts_sensor_gyro" xml:space="preserve">
+    <value>ジャイロセンサー</value>
+  </data>
 </root>

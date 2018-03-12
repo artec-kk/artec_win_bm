@@ -55,6 +55,17 @@ namespace ScratchConnection.Forms
             com.Disconnected += new EventHandler(com_Disconnected);
         }
 
+        void initializeMotor()
+        {
+            byte i = 0;
+            foreach (ServoAngle elm in new ServoAngle[] { saD2, saD4, saD7, saD8, saD9, saD10, saD11, saD12 })
+            {
+                if (elm.Enabled)
+                    setServoMotor(i, (int)elm.nudAngle.Value);
+                i++;
+            }
+        }
+
         delegate void CloseDelegate();
 
         void com_Disconnected(object sender, EventArgs e)
@@ -172,6 +183,11 @@ namespace ScratchConnection.Forms
         {
             com.Disconnected -= new EventHandler(com_Disconnected);
             ((PortManager)com).closeCOMPort();
+        }
+
+        private void CalibrationST_Load(object sender, EventArgs e)
+        {
+            initializeMotor();
         }
     }
 }

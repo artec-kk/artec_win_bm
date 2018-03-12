@@ -122,6 +122,10 @@ namespace ScratchConnection
                         { // 言語切り替え(中国語)
                             util.changeLanguage("zh");
                         }
+                        if (data == "LANGZT")
+                        { // 言語切り替え(中国語(台湾))
+                            util.changeLanguage("zh-TW");
+                        }
                         if (data == "LANGH")
                         { // 言語切り替え(にほんご)
                             util.changeLanguage("ja_HIRA");
@@ -133,6 +137,10 @@ namespace ScratchConnection
                         if (data == "LANGES")
                         { // 言語切り替え(スペイン語)
                             util.changeLanguage("es");
+                        }
+                        if (data == "LANGFR")
+                        { // 言語切り替え(フランス語)
+                            util.changeLanguage("fr");
                         }
                         #endregion
                         #region その他
@@ -162,6 +170,14 @@ namespace ScratchConnection
                             Debug.Write("communication test END\r\n");
                             // 転送完了通知を送信
                             util.stopTestModeTransfer();
+                        }
+                        if (data == "SHOWKEYPAD")
+                        {
+                            util.showKeypad(false);
+                        }
+                        if (data == "HIDEKEYPAD")
+                        {
+                            util.hideKeypad();
                         }
                         if (data == "BREAK")
                         { // 通信切断通知

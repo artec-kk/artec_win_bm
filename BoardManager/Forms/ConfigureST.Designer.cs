@@ -75,12 +75,12 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cbDCM2);
             this.panel1.Controls.Add(this.cbDCM1);
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // label1
@@ -104,6 +104,7 @@
             // 
             // panel4
             // 
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.BackColor = System.Drawing.Color.SandyBrown;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label4);
@@ -111,7 +112,6 @@
             this.panel4.Controls.Add(this.cbBIn3);
             this.panel4.Controls.Add(this.cbBIn2);
             this.panel4.Controls.Add(this.cbBIn1);
-            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // label4
@@ -149,6 +149,7 @@
             // 
             // panel3
             // 
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.cbbSIn4);
@@ -168,13 +169,12 @@
             this.panel3.Controls.Add(this.cbbSIn2);
             this.panel3.Controls.Add(this.cbSIn3);
             this.panel3.Controls.Add(this.cbSIn2);
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // cbbSIn4
             // 
-            this.cbbSIn4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn4, "cbbSIn4");
+            this.cbbSIn4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn4.FormattingEnabled = true;
             this.cbbSIn4.Name = "cbbSIn4";
             // 
@@ -192,30 +192,30 @@
             // 
             // cbbSIn8
             // 
-            this.cbbSIn8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn8, "cbbSIn8");
+            this.cbbSIn8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn8.FormattingEnabled = true;
             this.cbbSIn8.Name = "cbbSIn8";
             // 
             // cbbSIn7
             // 
-            this.cbbSIn7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn7, "cbbSIn7");
+            this.cbbSIn7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn7.FormattingEnabled = true;
             this.cbbSIn7.Name = "cbbSIn7";
             // 
             // cbbSIn6
             // 
-            this.cbbSIn6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn6, "cbbSIn6");
+            this.cbbSIn6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn6.FormattingEnabled = true;
             this.cbbSIn6.Name = "cbbSIn6";
             this.cbbSIn6.SelectedIndexChanged += new System.EventHandler(this.cbbSIn56_SelectedIndexChanged);
             // 
             // cbbSIn1
             // 
-            this.cbbSIn1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn1, "cbbSIn1");
+            this.cbbSIn1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn1.FormattingEnabled = true;
             this.cbbSIn1.Name = "cbbSIn1";
             // 
@@ -235,8 +235,8 @@
             // 
             // cbbSIn5
             // 
-            this.cbbSIn5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn5, "cbbSIn5");
+            this.cbbSIn5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn5.FormattingEnabled = true;
             this.cbbSIn5.Name = "cbbSIn5";
             this.cbbSIn5.SelectedIndexChanged += new System.EventHandler(this.cbbSIn56_SelectedIndexChanged);
@@ -264,15 +264,15 @@
             // 
             // cbbSIn3
             // 
-            this.cbbSIn3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn3, "cbbSIn3");
+            this.cbbSIn3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn3.FormattingEnabled = true;
             this.cbbSIn3.Name = "cbbSIn3";
             // 
             // cbbSIn2
             // 
-            this.cbbSIn2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbbSIn2, "cbbSIn2");
+            this.cbbSIn2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSIn2.FormattingEnabled = true;
             this.cbbSIn2.Name = "cbbSIn2";
             // 
@@ -292,6 +292,7 @@
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.BackColor = System.Drawing.Color.LightCoral;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label2);
@@ -303,7 +304,6 @@
             this.panel2.Controls.Add(this.cbSVD11);
             this.panel2.Controls.Add(this.cbSVD10);
             this.panel2.Controls.Add(this.cbSVD9);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // label2

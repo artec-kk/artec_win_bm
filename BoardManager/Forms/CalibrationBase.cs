@@ -104,7 +104,8 @@ namespace ScratchConnection.Forms
         /// <param name="e"></param>
         private void CalibrationBase_FormClosing(object sender, FormClosingEventArgs e)
         {
-            updateCalibInfo();
+            if(DialogResult == DialogResult.OK)
+                updateCalibInfo();
         }
 
         /// <summary>

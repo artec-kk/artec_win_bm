@@ -12,43 +12,98 @@ using System.Windows.Forms;
 using Artec.BuildConst;
 using Artec.TestModeCommunication;
 using ScratchConnection.Forms;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using Artec.Studuino.Utils;
 
 namespace ScratchConnection
 {
     // 基板タイプ
     public struct BoardType
     {
-        public int id;
+        public enum ID
+        {
+            UNDEFINED = -1,
+            STUDUINO = 0, STUDUINO_MINI, STUDUINO_AND_MINI, STUDUINO2
+        };
+
+        public ID id;
         public string message;
-        public BoardType(int id, string message)
+        public int frequency;
+        public MCUType mcu;
+        public int bootloaderSize;
+        public int MaxProgramSize
+        {
+            get { return mcu.sizeFLASH - bootloaderSize; }
+        }
+
+        private BoardType(ID id, string message, int frequency, MCUType mcu, int bsSize)
         {
             this.id = id;
             this.message = message;
+            this.frequency = frequency;
+            this.mcu = mcu;
+            this.bootloaderSize = bsSize;
         }
-        public static BoardType STUDUINO = new BoardType(0, "STANDARD");
-        public static BoardType STUDUINO_MINI = new BoardType(1, "MINI");
-        public static BoardType STUDUINO_AND_MINI = new BoardType(2, "STANDMINI");
+        public static BoardType STUDUINO = new BoardType(ID.STUDUINO, "STANDARD", 8000000, MCUType.ATMEGA168PA, 512);
+        public static BoardType STUDUINO_MINI = new BoardType(ID.STUDUINO_MINI, "MINI", 12000000, MCUType.ATMEGA168PA, 2048);
+        public static BoardType STUDUINO_AND_MINI = new BoardType(ID.STUDUINO_AND_MINI, "STANDMINI", 8000000, MCUType.ATMEGA168PA, 512);
+        public static BoardType STUDUINO2 = new BoardType(ID.STUDUINO2, "328", 800000, MCUType.ATMEGA328P, 512);
 
         public static BoardType FromId(int id)
         {
-            if (id == 0)
+            if (id == (int)ID.STUDUINO)
                 return STUDUINO;
-            if (id == 1)
+            if (id == (int)ID.STUDUINO_MINI)
                 return STUDUINO_MINI;
-            if (id == 2)
+            if (id == (int)ID.STUDUINO_AND_MINI)
                 return STUDUINO_AND_MINI;
+            if (id == (int)ID.STUDUINO2)
+                return STUDUINO2;
 
             throw new ArgumentOutOfRangeException("id", "ID must be 0, 1, or 2.");
         }
     }
 
-    class Utility
+    public struct MCUType
     {
+        public int sizeFLASH;
+        public int sizeEEPROM;
+        public int sizeSRAM;
+
+        public string optionMCU;
+
+        private MCUType(int flash, int eeprom, int sram, string optionMCU)
+        {
+            this.sizeFLASH = flash;
+            this.sizeEEPROM = eeprom;
+            this.sizeSRAM = sram;
+            this.optionMCU = optionMCU;
+        }
+        public static MCUType ATMEGA168PA = new MCUType(16384, 512, 1024, "atmega168");
+        public static MCUType ATMEGA328P = new MCUType(32768, 1024, 2048, "atmega328p");
+    }
+
+    public class Utility
+    {
+        const int WM_SYSCOMMAND = 0x0112;
+        const int SC_CLOSE = 0xF060;
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public extern static IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public extern static int SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        [DllImport("msctf.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private extern static IntPtr SetInputScope(IntPtr hwnd, IntPtr inputscope);
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
         Studuino st;
         BoardType currentBT;
         NetworkStream stream;
         PortManager pm;
         TestModeCommunication tcom = new TestModeCommunication();  // テストモード通信用(Studuino mini専用)
+        RobotConnector mRobotConnector = new RobotConnector();
 
         const int BuildError = 0;           // ビルドエラー
         const int BuildSuccess = 1;         // ビルド成功
@@ -70,6 +125,7 @@ namespace ScratchConnection
         //  3: 【通信】Studuinoとの同期が取れない()
         //  4: 【通信】書き込みエラー(Communication has been disconnected)
         //  5: 【システム】致命的なエラー(Emergency error)
+        //  6: 【システム】デバイスドライバがデバイスを開始できない状態（デバイスマネージャで黄色の△に！マークがついている状態）
         //  7: 【リンク】メインルーチンが定義されていない
         //  8: 【ビルド】プログラムサイズオーバーフロー
         //  9: 【アーカイブ】アーカイブエラー
@@ -178,10 +234,24 @@ namespace ScratchConnection
             string arg = st.LinkerOption + " ";
             arg += "-o " + st.ArduinoSystemPath + st.ElfFile + " ";
             arg += st.ArduinoSystemPath + st.ObjectFile + " ";
-            //foreach (string elm in st.SystemObjectFiles)
-            //{
-            //    arg += st.ArduinoSystemPath + elm + " ";
-            //}
+
+            stRobotIOStatus io = getIOStatusFromFile();
+            if (io.nSns5Kind == (int)OptionPartsID.Gyro)
+            {   // ジャイロセンサーを使用している場合
+                foreach (string elm in st.SystemObjectFilesGyro)
+                {
+                    arg += st.ArduinoSystemPath + elm + " ";
+                }
+            }
+            else
+            {   // オプションパーツを使用していない場合
+                foreach (string elm in st.SystemObjectFilesV1)
+                {
+                    arg += st.ArduinoSystemPath + elm + " ";
+                }
+            }
+
+
             arg += st.ArduinoSystemPath + st.ArchiverFile + " ";
             arg += "-L" + st.ArduinoSystemPath + st.LinkDirectory;
 
@@ -418,6 +488,7 @@ namespace ScratchConnection
             {
                 result = 4;    // 書き込みエラー
             }
+            Debug.WriteLine("avrdude: " + result);
 
             return result;
         }
@@ -597,21 +668,21 @@ namespace ScratchConnection
         /// <returns>true:成功 false:失敗</returns>
         private bool transferHexFile(string hexFile)
         {
-            if (currentBT.Equals(BoardType.STUDUINO))
+            if (currentBT.Equals(BoardType.STUDUINO) || currentBT.Equals(BoardType.STUDUINO2))
             {
                 ////////////////////////////////////////////////////////////////////////
                 //                          Studuino
                 ////////////////////////////////////////////////////////////////////////
-                string comPortName = string.Empty;
+                string comName = string.Empty;
                 try
                 {
-                    comPortName = pm.getStuduinoPort();
+                    comName = pm.getStuduinoPort();
 
                     // COMポートが見つからない、またはエラーが発生した場合は終了
-                    if (comPortName == null)
+                    if (comName == null)
                         ErrorNumber = 1;
                     else
-                        ErrorNumber = transferAvrdude(comPortName, hexFile);
+                        ErrorNumber = transferAvrdude(comName, hexFile);
                 }
                 catch (ComPortException)
                 {
@@ -694,24 +765,7 @@ namespace ScratchConnection
         public void changeBoardType(int id)
         {
             currentBT = BoardType.FromId(id);
-            if (id == BoardType.STUDUINO.id)
-            {
-                st = new Studuino();
-                //st = new Studuino10609();
-            }
-            else if (id == BoardType.STUDUINO_MINI.id)
-            {
-                st = new StuduinoLP();
-                //st = new StuduinoLP10609();
-            }
-            else if (id == BoardType.STUDUINO_AND_MINI.id)
-            {
-                st = new StuduinoAndMini();
-            }
-
-            Debug.WriteLine("BoardType changed: " + currentBT.id);
-            if(stream != null)
-                sendMessageToBPE(currentBT.id.ToString());
+            st = new Studuino(currentBT);
         }
 
         #region 【処理】 テストモード
@@ -730,15 +784,51 @@ namespace ScratchConnection
         /// <param name="socket"></param>
         public void transferBoardSide()
         {
-            if (currentBT.Equals(BoardType.STUDUINO))
+            string comPort = pm.getStuduinoPort();
+            if (comPort == null)
+            {
+                // 接続ポート情報を送信
+                sendMessageToBPE("ERR");
+                // エラー情報を送信
+                sendMessageToBPE("1");
+                // 転送完了通知を送信
+                sendMessageToBPE("FINISH");
+                return;
+            }
+
+            // MPUを判定し、ボードタイプを変更する。
+            Artec.Studuino.BoardType mpu = mRobotConnector.checkBoardType(comPort);
+            if (mpu == Artec.Studuino.BoardType.ATMEGA168PA)
+            {
+                changeBoardType((int)BoardType.ID.STUDUINO);
+            }
+            else if (mpu == Artec.Studuino.BoardType.ATMEGA328P)
+            {
+                changeBoardType((int)BoardType.ID.STUDUINO2);
+            }
+            else
+            {
+                // ボードタイプが不明な場合、予期しないエラーを発生させて終了する
+                // Studuinoがつながれていればココには来ない
+
+                // 接続ポート情報を送信
+                sendMessageToBPE("ERR");
+                // エラー情報を送信
+                sendMessageToBPE("20");  // ユーザーに予期しないエラーが発生していることを示すエラー
+                // 転送完了通知を送信
+                sendMessageToBPE("FINISH");
+
+                return;
+            }
+
+            if (currentBT.Equals(BoardType.STUDUINO) || currentBT.Equals(BoardType.STUDUINO2))
             {
                 bool isTransfered = transferHexFile(@st.TestModePath + st.TestModeFile);
                 if (isTransfered)   // 基板側プログラムの転送成功時
                 {
                     // 接続ポート情報を送信
                     Debug.WriteLine("Port Info");
-                    string msg = pm.getStuduinoPort();
-                    sendMessageToBPE(msg);
+                    sendMessageToBPE(comPort);
                     sendMessageToBPE("FINISH");
                 }
                 else                // 基板側プログラムの転送失敗時
@@ -894,10 +984,65 @@ namespace ScratchConnection
         /// <param name="socket"></param>
         public void makeAndTransferProgram()
         {
+            string comPort = null;
+            //-----------------------------------------------------------------
+            // PCとStuduino基板が通信できる状態かどうかを確認
+            //-----------------------------------------------------------------
+            try
+            {
+                comPort = pm.getStuduinoPort();
+                if (comPort == null)
+                {
+                    // 接続ポート情報を送信
+                    sendMessageToBPE("ERR");
+                    // エラー情報を送信
+                    sendMessageToBPE("1");  // ユーザーにUSB接続を確認するよう示唆するエラー
+                    // 転送完了通知を送信
+                    sendMessageToBPE("FINISH");
+
+                    return;
+                }
+            }
+            catch (ComPortException)
+            {
+                // 接続ポート情報を送信
+                sendMessageToBPE("ERR");
+                // エラー情報を送信
+                sendMessageToBPE("6");  // ユーザーにCOMポートでエラーが発生していることを示すエラー
+                // 転送完了通知を送信
+                sendMessageToBPE("FINISH");
+
+                return;
+            }
+
             //-----------------------------------------------------------------
             // ユーザプログラムのビルド処理
             //-----------------------------------------------------------------
-            //int ret = bulidUserProgram();
+            // MPUを判定し、ボードタイプを変更する。
+            Artec.Studuino.BoardType mpu = mRobotConnector.checkBoardType(comPort);
+            if (mpu == Artec.Studuino.BoardType.ATMEGA168PA)
+            {
+                changeBoardType((int)BoardType.ID.STUDUINO);
+            }
+            else if (mpu == Artec.Studuino.BoardType.ATMEGA328P)
+            {
+                changeBoardType((int)BoardType.ID.STUDUINO2);
+            }
+            else
+            {
+                // ボードタイプが不明な場合、予期しないエラーを発生させて終了する
+                // Studuinoがつながれていればココには来ない
+
+                // 接続ポート情報を送信
+                sendMessageToBPE("ERR");
+                // エラー情報を送信
+                sendMessageToBPE("20");  // ユーザーに予期しないエラーが発生していることを示すエラー
+                // 転送完了通知を送信
+                sendMessageToBPE("FINISH");
+
+                return;
+            }
+
             int ret = buildUserProgram();
             if (ret == BuildSuccess)
             {   // make成功の場合は、転送処理を実行
@@ -917,7 +1062,7 @@ namespace ScratchConnection
                 {
                     // 接続ポート情報を送信
                     Debug.WriteLine("Port info");
-                    if (currentBT.Equals(BoardType.STUDUINO))
+                    if (currentBT.Equals(BoardType.STUDUINO) || currentBT.Equals(BoardType.STUDUINO2))
                     {
                         sendMessageToBPE(pm.getStuduinoPort());
                     }
@@ -961,24 +1106,6 @@ namespace ScratchConnection
         [Obsolete("初期のメソッドのため使用不可。calibMotorを使用する。", true)]
         public void setServomotorOffset(int lang = 0)
         {
-            // Studuino miniの場合、リセットが押されるのを待つ
-            //if (currentBT.Equals(BoardType.STUDUINO_MINI))
-            //{
-            //    BoardStatus bs = new BoardStatus();
-            //    if (bs.isReady())
-            //    {
-            //        Debug.WriteLine("Reset pushed");
-            //        sendMessageToBPE("OK");
-            //    }
-            //    else
-            //    {
-            //        Debug.WriteLine("Time out");
-            //        // タイムアウト通知を送信
-            //        sendMessageToBPE("TIMEOUT");
-            //        return;
-            //    }
-            //}
-
             //// -----------------------------------------------------------------
             //// 入出力情報を読み込む
             //// -----------------------------------------------------------------
@@ -1135,7 +1262,7 @@ namespace ScratchConnection
         /// <param name="message">メッセージ</param>
         /// <param name="stream">データストリーム</param>
         /// <param name="delim">区切り文字</param>
-        private void sendMessageToBPE(String message, String delim = ".")
+        private void sendMessageToBPE(String message, String delim = ";")
         {
             String sendMessage = message + delim + "\r\n";   // 末尾の改行(\r\n)は必須, delimはスクラッチ側で文字検出を容易にするため
             byte[] data = System.Text.Encoding.ASCII.GetBytes(sendMessage);
@@ -1154,10 +1281,35 @@ namespace ScratchConnection
         /// <param name="lang"></param>
         public void calibMotor(int lang = 0)
         {
+            string comPort = pm.getStuduinoPort();
+            if (comPort == null)
+            {
+                // 接続ポート情報を送信
+                sendMessageToBPE("ERR");
+                // エラー情報を送信
+                sendMessageToBPE("1");
+                // 転送完了通知を送信
+                sendMessageToBPE("FINISH");
+                return;
+            }
             //// -----------------------------------------------------------------
-            //// 入出力情報を読み込む
+            //// 入出力情報・校正情報を読み込む
             //// -----------------------------------------------------------------
             stRobotIOStatus io = getIOStatusFromFile();
+            svOffset.readDCInfo(iniDC);
+            svOffset.readServoInfo(iniFile);
+
+            // MPUを判定し、ボードタイプを変更する。
+            Artec.Studuino.BoardType mpu = mRobotConnector.checkBoardType(comPort);
+            switch (mpu)
+            {
+                case Artec.Studuino.BoardType.ATMEGA168PA:
+                    changeBoardType((int)BoardType.ID.STUDUINO);
+                    break;
+                case Artec.Studuino.BoardType.ATMEGA328P:
+                    changeBoardType((int)BoardType.ID.STUDUINO2);
+                    break;
+            }
 
             // -----------------------------------------------------------------
             // 基板側プログラム(.hex)をアップロード
@@ -1174,7 +1326,7 @@ namespace ScratchConnection
                 return;
             }
 
-            if (currentBT.Equals(BoardType.STUDUINO))
+            if (currentBT.Equals(BoardType.STUDUINO) || currentBT.Equals(BoardType.STUDUINO2))
             {
                 // -------------------------------------------------------------
                 // COMポートをオープンする
@@ -1192,6 +1344,7 @@ namespace ScratchConnection
                     return; // 処理終了
                 }
                 sendMessageToBPE("CALIBRATE");
+                pm.receiveData(2);  // 校正モード起動待ち
             }
             else
             {
@@ -1324,6 +1477,13 @@ namespace ScratchConnection
             //-----------------------------------------------------------------
             using (ConfigureBase setting = getConfigure(io, hiragana))
             {
+                // フォームが表示されない場合の対策
+                System.Timers.Timer t = new System.Timers.Timer();
+                t.Interval = 2000;
+                t.AutoReset = false;
+                t.Elapsed += new System.Timers.ElapsedEventHandler(t_Elapsed);
+                t.Start();
+
                 if (setting.ShowDialog() == DialogResult.OK)
                 {
                     File.Delete(BOARD_IO); // ファイルを削除し、新しくファイルを作成する
@@ -1447,6 +1607,10 @@ namespace ScratchConnection
             {
                 lang = "zh";
             }
+            if (lang == "zh_TW")
+            {
+                lang = "zh-TW";
+            }
 
             try
             {
@@ -1485,6 +1649,73 @@ namespace ScratchConnection
                 p.Kill();
             }
         }
+
+        /// <summary>
+        /// ソフトウェアキーボード(TabTip)を表示させる
+        /// </summary>
+        /// <param name="numericKeyboard"></param>
+        public void showKeypad(bool numericKeyboard)
+        {
+            //OSのバージョン情報を取得する
+            System.OperatingSystem os = System.Environment.OSVersion;
+
+            //Windows NT系か調べる
+            if (!((os.Platform == PlatformID.Win32NT) && (os.Version.Major >= 10)))
+                return;
+
+            Process.Start(@"c:\program files\common files\microsoft shared\ink\tabtip.exe");
+        }
+
+        /// <summary>
+        /// ソフトウェアキーボード(TabTip)のウィンドウを探し、見つかったらメッセージを送信して隠す
+        /// </summary>
+        public void hideKeypad()
+        {
+            //OSのバージョン情報を取得する
+            System.OperatingSystem os = System.Environment.OSVersion;
+
+            //Windows NT系か調べる
+            if (!((os.Platform == PlatformID.Win32NT) && (os.Version.Major >= 10)))
+                return;
+
+            IntPtr hWnd = FindWindow("IPTip_Main_Window", "");
+            if (hWnd != IntPtr.Zero)
+            {
+                SendMessage(hWnd, WM_SYSCOMMAND, SC_CLOSE, 0);
+            }
+        }
+
+        /// <summary>
+        /// ソフトウェアキーボード(TabTip)のプロセスを終了する。
+        /// レイアウトを変更したい場合、一旦終了後にレイアウトを変えてから再度表示する。
+        /// </summary>
+        private static void killTabTip()
+        {
+            // Kill the previous process so the registry change will take effect.
+            foreach (var process in Process.GetProcessesByName("TabTip"))
+            {
+                process.Kill();
+            }
+        }
+
+        void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            gotoForeground();
+        }
+
+        /// <summary>
+        /// ウインドウを最前面に表示する。
+        /// </summary>
+        private void gotoForeground()
+        {
+            // 現在のプロセスを取得する
+            System.Diagnostics.Process hProcess = System.Diagnostics.Process.GetCurrentProcess();
+            Debug.WriteLine("Form load");
+            Debug.WriteLine(hProcess.Id);
+            Debug.WriteLine(hProcess.MainWindowTitle);
+            bool success = SetForegroundWindow(hProcess.MainWindowHandle);
+            Debug.WriteLine(success);
+        }
     }
 
     // ---------------------------------------------------------------------
@@ -1501,7 +1732,7 @@ namespace ScratchConnection
         System.Timers.Timer monitorDisconnection;
 
         /// <summary>
-        /// 最後に接続したポートが有効か確認し、有効であればそのポート名を返す。無効ならWMIで検索。
+        /// Studuinoと接続されているポート名を返す。接続されていない場合はNULLを返す。
         /// </summary>
         /// <returns>ポート名</returns>
         public string getStuduinoPort()
@@ -1605,6 +1836,7 @@ namespace ScratchConnection
                 // 基板にソフトウェアリセットがかかる。DtrEnableをfalseに設定す
                 // ればソフトウェアリセットはかかりません。
                 port.DtrEnable = true;
+                port.ReadTimeout = 2000;
                 port.Open();
 
                 port.DtrEnable = false;
@@ -1666,6 +1898,13 @@ namespace ScratchConnection
             catch (InvalidOperationException)
             {
             }
+        }
+
+        public byte[] receiveData(int size = 1)
+        {
+            byte[] rcv = new byte[size];
+            port.Read(rcv, 0, size);
+            return rcv;
         }
 
         public event EventHandler Disconnected;
